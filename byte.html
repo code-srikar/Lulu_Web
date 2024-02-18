@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="byte.css">
+</head>
+<body>
+    <div class="main">
+        <h1>LULU BANK</h1><br><br>
+        <div class="in1">
+            <h3>LOGIN PAGE</h3>
+            <label for="user">email :</label>
+            <input type="text" placeholder="email" name="email" id="email"><br><br>
+            <label for="pass">password :</label>
+            <input type="password" placeholder="password" name="pass" id="pass"><br><br>
+            <button name="login" id="login">login</button>
+            <button>forgot</button>
+            <p>Create a new customer?<a href="byte2.html">clickhere</a></p>
+        </div>
+    </div> 
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+      authDomain: "lulu-bank-90869.firebaseapp.com",
+      projectId: "lulu-bank-90869",
+      storageBucket: "lulu-bank-90869.appspot.com",
+      messagingSenderId: "695316046662",
+      appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    console.log(app);
+    
+    document.getElementById("login").addEventListener("click",function(){
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("pass").value;
+
+        if(password!="" && email!=""){
+            signInWithEmailAndPassword(auth,email,password)
+                .then((userCredential) =>{
+                    const user = userCredential.user;
+                    console.log(user);
+                    alert("Login successful");
+                    email = document.getElementById("email").value="";
+                    password = document.getElementById("pass").value="";
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    alert(errorMessage);
+                });
+            }else{
+                alert('Please fill all the fields');
+            }
+    });
+  </script>
+</html>
