@@ -1,3 +1,3 @@
 function sign(){
-    alert("Read Successful");
+    alert("Read");
 }
