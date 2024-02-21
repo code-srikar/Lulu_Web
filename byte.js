@@ -1,4 +1,8 @@
 function forgot(){
     let em=prompt("Enter your Email id");
-    alert("Verification code is sent");
+    while(em.length<=0){
+        alert("Please enter correct email id");
+        em=prompt("enter your email id");
+    }
+    alert("verification code is sent");
 }
