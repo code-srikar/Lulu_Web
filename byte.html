@@ -14,16 +14,16 @@
             <h1 class="form">LOGIN FORM</h1>
             <input type="text" placeholder="Enter your Email" name="email" id="email"><br><br>
             <input type="password" placeholder="Enter your Password" name="pass" id="pass"><br><br>
-            <button name="login" id="login">login</button>
-            <button onclick="forgot()">forgot</button>
-            <p>Create a new customer?<a href="byte2.html">clickhere</a></p>
+            <button name="login" id="login">Login</button>
+            <button name="forgot" id="forgot">Forgot</button>
+            <p>Create a new customer?<a href="byte2.html">Click Here</a></p>
         </div>
     </div> 
 </body>
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -65,6 +65,15 @@
             }else{
                 alert('Please fill all the fields');
             }
+    });
+
+    document.getElementById("forgot").addEventListener("click", function (){
+        sendPasswordResetEmail(auth,document.getElementById("email").value)
+          .then(() => {
+            alert("Check your inbox for a reset link!");
+          }).catch((error) => {
+            alert(error.message);
+            });
     });
   </script>
 </html>
