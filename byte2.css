@@ -6,6 +6,7 @@ button:hover{
 }
 body{
     background-image: url("image.jpg");
+    font-family: sans-serif;
 }
 .sign{
     background-color:rgb(233, 164, 36);
@@ -56,7 +57,7 @@ header{
 }
 
 .main{
-    font-family: sans-serif;
+    
     color: whitesmoke;
     text-align: center;
 }
