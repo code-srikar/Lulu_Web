@@ -1,0 +1,142 @@
+#mn{
+    position: absolute;
+    margin: auto;
+    size: 1000dp;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    background-color: rgba(202,237,247,0.993);
+}
+#imag{
+    position: relative;
+    top:12px;
+    height: 85px;
+
+}
+#bx2{
+    display: flex;
+    background-color: whitesmoke;
+    height: 9%;
+    width: auto;
+}
+#dtr,#dtl{
+    position: relative;
+    display: inline-block;
+    width:49%;
+    height: auto;
+    /* background-color: whitesmoke; */
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    padding: 3px;
+    justify-items: right;
+}
+#so{
+    position: relative;
+    top: 10px;
+    text-align: right;
+    justify-content: space-evenly;
+    right: 10px;
+    width:30px;
+}
+#lul{
+    color: rgb(100, 173, 64);
+    font-family: sans-serif;
+    margin-top: 13px;
+    justify-content: center;
+    margin-left: 30px;
+}
+#st{
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+}
+#flexitem{
+    position: relative;
+    top:5px;
+    width:75px;
+    text-align: end;
+    /* justify-content: end; */
+}
+li{
+    padding: 5px;
+}
+#dtr{
+    /* top: 10px; */
+    display: flex;
+    justify-content: end;
+
+}
+#imp{
+    border-radius: 50%;
+    height: 28px;
+    top:2px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+#nam{
+    margin-left: 13px;
+    margin-top: 10px;
+    font-size:22px;
+}
+#it3 { 
+    grid-area: tl;
+    border: 15px  ;
+}
+#it4 { 
+    grid-area: tr;
+}
+#it5 { 
+    grid-area: bl;
+}
+#it6 { 
+    grid-area: br;
+}
+#itm{
+    display: grid;
+    position: absolute;
+    height:85vh;
+    width: 75%;
+    left: 10%;
+    align-items: center;
+    grid-template-areas: 
+    'tl    tr'
+    'bl   br' ;
+    padding : 10px;
+    justify-content:space-around;  
+
+}
+#cm{
+    font-size: larger;
+    padding: auto;
+    position: relative;
+    margin: 39% auto;
+
+}
+#bx{
+    position: relative;
+    padding: 35px;
+    height: 130px;
+    text-align: center;
+    align-items: center;
+    width:130px;
+    opacity: 0.8px;
+    border-radius: 5px;
+    background-color: rgb(119, 199, 79);
+}
+#bx:hover{
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+     transition-timing-function: all;
+     transition: 0.7s;
+}
+a{
+    color: black;
+    text-decoration: none;
+
+}
