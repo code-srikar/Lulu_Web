@@ -1,5 +1,6 @@
 body{
     background-color: rgba(202, 237, 247, 0.993);
+    font-family: sans-serif;
 }
 
 main{
@@ -8,10 +9,6 @@ main{
 
 button:hover{
     font-size: 1.05rem;
-}
-body{
-    background-image: url("image.jpg");
-    font-family: sans-serif;
 }
 
 .title{

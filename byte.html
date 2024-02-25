@@ -55,9 +55,9 @@
                 .then((userCredential) =>{
                     const user = userCredential.user;
                     console.log(user);
-                    alert("Login successful");
                     email = document.getElementById("email").value="";
                     password = document.getElementById("pass").value="";
+                    window.location.href = 'proj.html';
                 })
                 .catch((error) => {
                     const errorCode = error.code;
