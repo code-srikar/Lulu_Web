@@ -1,0 +1,82 @@
+#det{
+    background-color: rgba(202,237,247,0.993);
+    /* color: rgb(100, 173, 64); */
+    position: relative;
+    height: 600px;
+    width: 1050px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+#cdet{
+    position: relative;
+    text-align: center;
+    padding: 80px;
+}
+#mnn{
+    position: absolute;
+    top: 0;
+    background-color: whitesmoke;
+    /* background-color: rgba(202,237,247,0.993); */
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+#im{
+    height: 115px;
+    width: 115px;
+    border-radius: 5px;
+}
+#nam{
+    position: absolute;
+    top: 0;
+    /* left: 2px; */
+}
+#bx1{ 
+    position: relative;
+    width: 1050px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top:25px;
+    padding: 150px;
+
+}
+#bx2{
+    position: absolute;
+    top:15px;
+    display: flex;
+    justify-content: center;
+    width: 1050px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+}
+#sodhi{
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    margin-top: -120px;
+}
+.sign{
+    background-color:rgb(119, 199, 79);
+    width: 260px;
+    height: 70px;
+    margin: 3%;
+    margin-left: 50%;
+    margin-right: 50%;
+    justify-content: center;
+    text-align: center;
+    padding: 4px;
+    border-style: solid;
+    border-radius: 7.5px;
+    color: rgb(119, 199, 79);
+    color: whitesmoke;
+    border-color: rgb(119, 199, 79);
+}
