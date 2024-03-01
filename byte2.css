@@ -1,6 +1,83 @@
 body{
     background-color: rgba(202, 237, 247, 0.993);
+}
+.first{
+    z-index: 1;
+    position: relative;
+    margin-top: 8%;
+}
+#mn{
+    position: absolute;
+    margin: auto;
+    size: 1000dp;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    background-color: rgba(202,237,247,0.993);
+}
+#imag{
+    position: relative;
+    top:12px;
+    height: 85px;
+}
+#bx2{
+    display: flex;
+    background-color: whitesmoke;
+    height: 9%;
+    width: auto;
+}
+#dtr,#dtl{
+    position: relative;
+    display: inline-block;
+    width:49%;
+    height: auto;
+}
+#flexitem{
+    position: relative;
+    top:5px;
+    width:75px;
+    text-align: end;
+}
+#imp{
+    border-radius: 50%;
+    height: 28px;
+    top:2px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+#so{
+    position: relative;
+    top: 10px;
+    text-align: right;
+    justify-content: space-evenly;
+    right: 10px;
+    width:30px;
+}
+#lul{
+    color: rgb(100, 173, 64);
     font-family: sans-serif;
+    margin-top: 13px;
+    justify-content: center;
+    margin-left: 30px;
+}
+#st{
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+}
+#dtr{
+    display: flex;
+    justify-content: end;
+}
+a{
+    color: black;
+    text-decoration: none;
+
 }
 
 main{
@@ -81,13 +158,15 @@ input[type="email"]{
     cursor: pointer;
 }
 .header{
+    margin-left: 5%;
+    margin-right: 5%;
     width: 1443px;
     height: 80px;
     color: whitesmoke;
     border-style:solid;
     border-width: 1px;
     mask-border: 0.5;
-    padding-left: 5%;
+    padding-left: 35px;
     background-color: white;
     display: flex;
     flex-direction: row;
