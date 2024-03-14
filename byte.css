@@ -2,7 +2,21 @@ body{
     background-color: rgba(202, 237, 247, 0.993);
     /* font-family: sans-serif; */
 }
+#log{
+   position: relative;
+   font-family: serif;
+   background-color:  rgb(119, 199, 79);
+    top: 2px;
+    left: 9px;
+    margin-left: 5px;
+    padding: 7px 5px 2px 6px;
+    height: 25px;
+    /* width: 50px; */
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
 
+}
 .header{
     width: 1443px;
     height: 80px;
