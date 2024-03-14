@@ -64,4 +64,48 @@
     </div>
 
 </body>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+      authDomain: "lulu-bank-90869.firebaseapp.com",
+      projectId: "lulu-bank-90869",
+      storageBucket: "lulu-bank-90869.appspot.com",
+      messagingSenderId: "695316046662",
+      appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore();
+    var userId;
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        userId = user.uid;
+        // ...
+    } else {
+        // User is signed out
+        // ...
+    }
+});
+
+    const docRef = doc(db, "User");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data().uname);
+    }
+   else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+    }
+
+</script>
+
 </html>
