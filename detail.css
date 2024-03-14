@@ -1,0 +1,27 @@
+#mn{
+    position: absolute;
+    margin: auto;
+    size: 1000dp;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(202,237,247,0.993);
+}
+#det{
+    /* background-color: rgba(202,237,247,0.993); */
+    background-color: wheat;
+    color: rgb(100, 173, 64);
+    position: relative;
+    height: 600px;
+    width: 1050px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}

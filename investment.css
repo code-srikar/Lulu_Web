@@ -51,7 +51,7 @@
 #lul{
     color: rgb(100, 173, 64);
     font-family: sans-serif;
-    margin-top: 13px;
+    margin-top: 20px;
     justify-content: center;
     margin-left: 30px;
 }
@@ -64,6 +64,7 @@
 }
 #dtr{
     display: flex;
+    top: 7px;
     justify-content: end;
 }
 a{
