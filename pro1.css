@@ -1,6 +1,6 @@
 #mn{
     position: absolute;
-    margin: auto;
+    padding: auto;
     size: 1000dp;
     height: 100%;
     width: 100%;
@@ -106,14 +106,14 @@ li{
 #itm{
     display: grid;
     position: absolute;
-    height:88vh;
+    height:77vh;
     width: 75%;
     left: 10%;
     align-items: center;
     grid-template-areas: 
     'tl    tr'
     'bl   br' ;
-    padding : 10px;
+    padding : 7px;
     justify-content:space-around;  
 
 }
@@ -144,4 +144,9 @@ a{
     color: black;
     text-decoration: none;
 
+}
+#tt{
+    position: relative;
+    width: max-content;
+    left: 15px;
 }
