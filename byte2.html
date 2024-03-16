@@ -86,7 +86,11 @@
         var acc_no = document.getElementById("ac").value;
 
         if(mail!="" && password!="" && re_password!="" && username!="" && mb_no!="" && acc_no!=""){
-            if (password == re_password) {
+            if(password.toString().length < 6){
+                alert('Password should be at least 6 characters long');
+            }
+            else {
+                if(password == re_password){
         
                 createUserWithEmailAndPassword(auth,mail,password)
                 .then((userCredential) =>{
@@ -130,7 +134,7 @@
             }
             else{
                 alert("Passwords do not match");
-            }
+            }}
             }else{
                 alert('Please fill all the fields');
             }

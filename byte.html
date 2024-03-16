@@ -49,7 +49,7 @@
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, isEmailVerified } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -85,6 +85,7 @@
                     localStorage.setItem('email',mail);
                     mail = document.getElementById("email").value="";
                     password = document.getElementById("pass").value="";
+                    auth.currentUser.isEmailVerified();
                     window.location.href = 'proj.html';
                 })
                 .catch((error) => {
@@ -93,18 +94,19 @@
                     console.log(errorMessage);
                     alert(errorMessage);
                 });
-            }else{
+            }
+            else{
                 alert('Please fill all the fields');
             }
     });
 
-    document.getElementById("forgot").addEventListener("click", function (){
+    /*document.getElementById("forgot").addEventListener("click", function (){
         sendPasswordResetEmail(auth,document.getElementById("email").value)
           .then(() => {
             alert("Check your inbox for a reset link!");
           }).catch((error) => {
             alert(error.message);
             });
-    });
+    });*/
   </script>
 </html>
