@@ -11,13 +11,14 @@
         <div id="det">
             <h1>Username : <span id="name"></span></h1>
             <h1>Balance : <span id="balance"></span></h1>
+            <div><h1 id="signout">Sign Out</h1></div>
         </div>
     </div>
 </body>
 <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
     const firebaseConfig = {
@@ -39,6 +40,12 @@
     console.log(localStorage.getItem('email'));
     document.getElementById('name').textContent = docSnap.data().uname;
     document.getElementById('balance').textContent = docSnap.data().amount;
+
+    document.getElementById('signout').addEventListener("click", () => {
+        signOut(auth).then(()=>{
+          window.location.href='byte.html';
+        })
+    });
 
 </script>
 </html>

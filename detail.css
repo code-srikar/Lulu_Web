@@ -25,3 +25,8 @@
     align-items: center;
     align-content: space-around;
 }
+
+#signout{
+    background-color: aliceblue;
+    cursor: pointer;
+}
