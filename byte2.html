@@ -49,6 +49,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, collection, setDoc} from  "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -65,6 +66,8 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
 
     console.log(app);
 
@@ -75,27 +78,43 @@
     })
     
     document.getElementById("signup").addEventListener("click",function(){
-        var email = document.getElementById("em").value;
+        var mail = document.getElementById("em").value;
         var password = document.getElementById("pass").value;
         var re_password = document.getElementById("passs").value;
         var username = document.getElementById("username").value;
         var mb_no = document.getElementById("num").value;
         var acc_no = document.getElementById("ac").value;
 
-        if(email!="" && password!="" && re_password!="" && username!="" && mb_no!="" && acc_no!=""){
+        if(mail!="" && password!="" && re_password!="" && username!="" && mb_no!="" && acc_no!=""){
             if (password == re_password) {
         
-                createUserWithEmailAndPassword(auth,email,password)
+                createUserWithEmailAndPassword(auth,mail,password)
                 .then((userCredential) =>{
                     const user = userCredential.user;
                     console.log(user);
-                    alert("Registration successful");
-                    email = document.getElementById("em").value="";
+
+                    try {
+                        const docRef = setDoc(doc(db, "User", mail), {
+                        uname: username,
+                        accno: acc_no,
+                        pass: password,
+                        repass: re_password,
+                        email: mail,
+                        mobile: mb_no
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    } catch (e) {
+                        console.error("Error adding document: ", e);
+                    }
+
+                    alert("Account created successfully");
+                    mail = document.getElementById("em").value="";
                     password = document.getElementById("pass").value="";
                     re_password = document.getElementById("passs").value="";
                     username = document.getElementById("username").value="";
                     mb_no = document.getElementById("num").value="";
                     acc_no = document.getElementById("ac").value="";
+
                     sendEmailVerification(auth.currentUser)
                     .then(() => {
                         alert( "verification mail sent" );

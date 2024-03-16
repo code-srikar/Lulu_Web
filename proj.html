@@ -28,6 +28,7 @@
             </div>
         </div>
         <div>
+            <h1>Welcome, <span id="name"></span></h1>
             <div id="itm">
                 <div id="it3"><a href="deposit.html">
                   <div id="bx">
@@ -82,24 +83,17 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const db = getFirestore();
-    var userId;
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        userId = user.uid;
-        // ...
-    } else {
-        // User is signed out
-        // ...
-    }
-});
 
-    const docRef = doc(db, "User");
+    const mail = localStorage.getItem('email');
+    console.log("Logged in with "+mail)
+
+    const docRef = doc(db, "User", mail);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data().uname);
+        document.getElementById('name').textContent = docSnap.data().uname;
+        localStorage.clear();
     }
    else {
         // docSnap.data() will be undefined in this case

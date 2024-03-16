@@ -86,22 +86,27 @@ li{
     font-size:22px;
 }
 #it3 { 
+    /*margin-top: 60px;*/
     grid-area: tl;
     border: 15px  ;
 }
 #it4 { 
+    /*margin-top: 60px;*/
     grid-area: tr;
+    border: 15px  ;
 }
 #it5 { 
     grid-area: bl;
+    border: 15px  ;
 }
 #it6 { 
     grid-area: br;
+    border: 15px  ;
 }
 #itm{
     display: grid;
     position: absolute;
-    height:85vh;
+    height:88vh;
     width: 75%;
     left: 10%;
     align-items: center;

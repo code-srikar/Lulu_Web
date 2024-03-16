@@ -66,15 +66,16 @@
     console.log(app);
     
     document.getElementById("login").addEventListener("click",function(){
-        var email = document.getElementById("email").value;
+        var mail = document.getElementById("email").value;
         var password = document.getElementById("pass").value;
 
-        if(password!="" && email!=""){
-            signInWithEmailAndPassword(auth,email,password)
+        if(password!="" && mail!=""){
+            signInWithEmailAndPassword(auth,mail,password)
                 .then((userCredential) =>{
                     const user = userCredential.user;
                     console.log(user);
-                    email = document.getElementById("email").value="";
+                    localStorage.setItem('email',mail);
+                    mail = document.getElementById("email").value="";
                     password = document.getElementById("pass").value="";
                     window.location.href = 'proj.html';
                 })
