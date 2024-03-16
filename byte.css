@@ -80,10 +80,11 @@ button:hover{
     background-color: burlywood;
     font-size: 1.05rem;
 }
-a:hover{
-    /* font-size: 1.1rem; */
-    /* color:cornflowerblue; */
-}
+/* a:hover{
+
+    font-size: 1.1rem; 
+    color:cornflowerblue;
+}*/
 
 input[type="text"] {
     border-radius: 6px;
