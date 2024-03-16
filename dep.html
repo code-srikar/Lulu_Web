@@ -9,12 +9,59 @@
 <body>
     <div id="mn">
         <div id="con">
-            <input type="number" id="inp" placeholder="amount">
+            <input type="number" id="inp" placeholder="Enter amount">
             <!-- <input type="text" id="inp" placeholder="sd"> -->
-            <div id="sub">Deposit</div>
+            <div id="sub" name="sub">Deposit</div>
         </div>
     </div>
     
     
 </body>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+      authDomain: "lulu-bank-90869.firebaseapp.com",
+      projectId: "lulu-bank-90869",
+      storageBucket: "lulu-bank-90869.appspot.com",
+      messagingSenderId: "695316046662",
+      appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore();
+
+    const docRef = doc(db, "User", localStorage.getItem('email'));
+    const docSnap = await getDoc(docRef);
+
+    console.log(localStorage.getItem('email'));
+
+    document.getElementById('sub').addEventListener("click",function(){
+        var x = document.getElementById('inp').value;
+        var y = parseInt(x);
+
+        if (x == ""){ 
+          alert("Please enter an amount");
+        }
+        else {
+            // add to balance
+            let a = docSnap.data().amount;
+            let b = parseInt(a);
+            b += y;
+            localStorage.setItem('amount',b);
+            updateDoc(docRef, {amount : b});
+            alert("Amount deposited successfully");
+            document.getElementById( 'inp' ).value= "";
+        }
+        setTimeout(function(){
+            window.location.reload();
+        },1000);
+    })
+
+</script>
 </html>

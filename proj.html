@@ -93,7 +93,6 @@
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data().uname);
         document.getElementById('name').textContent = docSnap.data().uname;
-        localStorage.clear();
     }
    else {
         // docSnap.data() will be undefined in this case

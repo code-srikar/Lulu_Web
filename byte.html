@@ -21,7 +21,7 @@
                         <div id="flexitem"><a href="contactus.html">Contact Us </a></div> -->
                         <div id="dtr">
                             <div id="st">
-                                <div class="login"  ><a href="byte2.html">Register</a></div>
+                                <div class="login" id="reg" name="reg">SignUp</a></div>
                             </div>
                         </div>
 </div>
@@ -68,6 +68,10 @@
     const auth = getAuth();
 
     console.log(app);
+
+    document.getElementById("reg").addEventListener("click",function(){
+        window.location.href='byte2.html';
+    });
     
     document.getElementById("login").addEventListener("click",function(){
         var mail = document.getElementById("email").value;
