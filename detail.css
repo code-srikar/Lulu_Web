@@ -17,8 +17,8 @@
     background-color: wheat;
     color: rgb(100, 173, 64);
     position: relative;
-    height: 600px;
-    width: 1050px;
+    height: 480px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +27,16 @@
 }
 
 #signout{
-    background-color: aliceblue;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: red;
+    border-style: solid;
+}
+
+#signout:hover{
     cursor: pointer;
+    border-color: whitesmoke;
+    border-style: solid;
 }

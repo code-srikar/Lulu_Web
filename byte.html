@@ -39,6 +39,7 @@
             <h1 class="form">LOGIN</h1>
             <input type="text" placeholder="Enter your Email" name="email" id="email"><br><br>
             <input type="password" placeholder="Enter your Password" name="pass" id="pass"><br><br>
+            <a id="forgot">Forgot Password?</a><br><br>
             <div class="login" id="login" name="login">Login</div>
             <!--<button name="login" id="login">Login</button>
             <button name="forgot" id="forgot">Forgot</button>-->
@@ -49,7 +50,7 @@
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -70,7 +71,7 @@
     console.log(app);
 
     document.getElementById("reg").addEventListener("click",function(){
-        window.location.href='byte2.html';
+        window.location.replace('byte2.html');
     });
     
     document.getElementById("login").addEventListener("click",function(){
@@ -82,10 +83,17 @@
                 .then((userCredential) =>{
                     const user = userCredential.user;
                     console.log(user);
-                    localStorage.setItem('email',mail);
-                    mail = document.getElementById("email").value="";
-                    password = document.getElementById("pass").value="";
-                    window.location.href = 'proj.html';
+                    var status = user.emailVerified;
+                    console.log("Is verified : "+status);
+                    if(status == true){
+                        localStorage.setItem('email',mail);
+                        window.location.reload();
+                        window.location.replace('proj.html');
+                    }
+                    else{
+                        alert("Your email is not verified!\nPlease verify your email to proceed further...");
+                        window.location.reload();
+                    }
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -99,13 +107,17 @@
             }
     });
 
-    /*document.getElementById("forgot").addEventListener("click", function (){
+    document.getElementById("forgot").addEventListener("click", function (){
         sendPasswordResetEmail(auth,document.getElementById("email").value)
           .then(() => {
-            alert("Check your inbox for a reset link!");
+            alert("Please check your inbox for a reset link!");
           }).catch((error) => {
-            alert(error.message);
+            if(document.getElementById("email").value == ""){
+                alert("Please enter your email address..")
+            }else{
+                alert(error.message);
+            }
             });
-    });*/
+    });
   </script>
 </html>

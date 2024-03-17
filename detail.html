@@ -11,7 +11,7 @@
         <div id="det">
             <h1>Username : <span id="name"></span></h1>
             <h1>Balance : <span id="balance"></span></h1>
-            <div><h1 id="signout">Sign Out</h1></div>
+            <div><h2 id="signout">Sign Out</h2></div>
         </div>
     </div>
 </body>
@@ -43,8 +43,8 @@
 
     document.getElementById('signout').addEventListener("click", () => {
         signOut(auth).then(()=>{
-          window.location.href='byte.html';
-          window.alert("You have been Signed out");
+            localStorage.clear();
+          window.location.replace('byte.html');
         })
     });
 

@@ -11,7 +11,7 @@
     <div id="mn">
         <div id="bx2">
             <div id="dtl">
-                <h2 id="lul" >LULU Bank</h2>
+                <h2 id="lul">LULU Bank</h2>
             </div>
            <div id="dtr">
                 <div id="st">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div>
-            <h1 id="tt">Welcome, <span id="name"></span></h1>
+            <h1 id="tt">Welcome, <span id="name"></span>!</h1>
             <div id="itm">
                 <div id="it3"><a href="deposit.html">
                   <div id="bx">
@@ -98,6 +98,10 @@
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
     }
+
+    document.getElementById('lul').addEventListener("click", () =>{
+        window.location.reload();
+    });
 
 </script>
 

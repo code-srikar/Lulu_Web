@@ -192,7 +192,12 @@ input[type="password"] {
     justify-content: end;
 }
 a{
-    color: black;
+    color: blue;
     text-decoration: none;
 
+}
+
+#forgot{
+    padding-left: 25.5%;
+    cursor: pointer;
 }
