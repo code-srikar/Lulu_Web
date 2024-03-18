@@ -131,6 +131,10 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorMessage);
+                    if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
+                        alert("Account with the email is already in use...");
+                    }
+                    window.location.reload();
                 });
             }
             else{

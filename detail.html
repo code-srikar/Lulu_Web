@@ -8,9 +8,33 @@
 </head>
 <body>
     <div id ="mn">
+        <div id="mn1">
+            <div id="bx2">
+                <div id="dtl">
+                    <h2 id="lul" >LULU Bank</h2>
+                </div>
+               <div id="dtr">
+                    <div id="st">
+                            <div id="flexitem"><a href="proj.html">Home</a></div>
+                            <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
+                            <div id="flexitem"><a href="download.html" style="text-align: center;margin-right: 10px;">Download </a></div>
+                            <div id="flexitem"><a href="contactus.html">Contact Us </a></div>
+                    </div>
+                    <div id="so">
+                        <a href="detail.html">
+                            <img src="prof.png" alt="profile pic" id="imp">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="det">
-            <h1>Username : <span id="name"></span></h1>
-            <h1>Balance : <span id="balance"></span></h1>
+            <h1>PROFILE SECTION</h1>
+            <h2>Username : <span id="name"></span></h2>
+            <h2>Balance : <span id="balance"></span></h2>
+            <h2>Email ID : <span id="mail"></span></h2>
+            <h2>Account Number : <span id="accno"></span></h2>
+            <h2>Mobile Number : <span id="mbno"></span></h2>
             <div><h2 id="signout">Sign Out</h2></div>
         </div>
     </div>
@@ -40,12 +64,19 @@
     console.log(localStorage.getItem('email'));
     document.getElementById('name').textContent = docSnap.data().uname;
     document.getElementById('balance').textContent = docSnap.data().amount;
+    document.getElementById('mail').textContent = docSnap.data().email;
+    document.getElementById('accno').textContent = docSnap.data().accno;
+    document.getElementById('mbno').textContent = docSnap.data().mobile;
 
     document.getElementById('signout').addEventListener("click", () => {
         signOut(auth).then(()=>{
             localStorage.clear();
           window.location.replace('byte.html');
         })
+    });
+
+    document.getElementById('lul').addEventListener("click", () =>{
+        window.location.reload();
     });
 
 </script>

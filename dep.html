@@ -8,8 +8,29 @@
 </head>
 <body>
     <div id="mn">
+        <div id="mn1">
+            <div id="bx2">
+                <div id="dtl">
+                    <h2 id="lul" >LULU Bank</h2>
+                </div>
+               <div id="dtr">
+                    <div id="st">
+                            <div id="flexitem"><a href="proj.html">Home</a></div>
+                            <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
+                            <div id="flexitem"><a href="contactus.html" style="text-align: center;margin-right: 10px;">Download </a></div>
+                            <div id="flexitem"><a href="contactus.html">Contact Us </a></div>
+                    </div>
+                    <div id="so">
+                        <a href="detail.html">
+                            <img src="prof.png" alt="profile pic" id="imp">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="con">
-            <input type="number" id="inp" placeholder="Enter amount">
+            <p id="title">Request a Deposit</p>
+            <input type="number" id="inp" placeholder="Enter amount to deposit">
             <!-- <input type="text" id="inp" placeholder="sd"> -->
             <div id="sub" name="sub">Deposit</div>
         </div>
@@ -52,12 +73,16 @@
             let b = parseInt(a);
             b += y;
             updateDoc(docRef, {amount : b});
-            alert("Amount deposited successfully...");
+            alert("Deposit has been approved\nAmount deposited successfully...");
         }
         setTimeout(function(){
             window.location.reload();
         },700);
-    })
+    });
+    
+    document.getElementById('lul').addEventListener("click", () =>{
+        window.location.reload();
+    });
 
 </script>
 </html>

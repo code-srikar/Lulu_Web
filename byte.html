@@ -99,7 +99,9 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorMessage);
-                    alert(errorMessage);
+                    if(errorMessage == "Firebase: Error (auth/invalid-credential)."){
+                        alert("Invalid credentials!!\nPlease try again with correct details.");
+                    }
                 });
             }
             else{

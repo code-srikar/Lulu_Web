@@ -49,6 +49,7 @@
     width:30px;
 }
 #lul{
+    cursor: pointer;
     color: rgb(100, 173, 64);
     font-family: sans-serif;
     margin-top: 20px;
