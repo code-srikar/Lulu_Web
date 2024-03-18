@@ -118,6 +118,9 @@ a{
     top:20px;
     height: 100px;
 }
+h3{
+    padding: 10px;
+}
 a{
     text-decoration: none;
     color: black;
