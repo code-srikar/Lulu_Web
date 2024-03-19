@@ -94,7 +94,7 @@
                     }
                     else{
                         //alert("Your email is not verified!\nPlease verify your email to proceed further...");
-                        toastr.warning('Your email is not verified\nPlease verify before proceeding further...')
+                        toastr.warning('Your email is not verified\nPlease verify before proceeding further...', 'Not Verified')
                         setTimeout(function() {localStorage.clear(); window.location.reload()}, 6500);
                         // window.location.reload();
                     }
@@ -105,7 +105,7 @@
                     console.log(errorMessage);
                     if(errorMessage == "Firebase: Error (auth/invalid-credential)."){
                         // alert("Invalid credentials!!\nPlease try again with correct details.");
-                        toastr.error('Invalid credentials!!\nPlease try again with correct details.');
+                        toastr.error('Please try again with correct details.', 'Invalid Credentials');
                     }
                 });
             }
@@ -119,7 +119,7 @@
         sendPasswordResetEmail(auth,document.getElementById("email").value)
           .then(() => {
             // alert("Please check your inbox for a reset link!");
-            toastr.success('Please check your inbox for a reset link!');
+            toastr.success('Please check your inbox for a reset link!', 'Sent');
           }).catch((error) => {
             if(document.getElementById("email").value == ""){
                 // alert("Please enter your email address..")

@@ -121,7 +121,7 @@
                         console.error("Error adding document: ", e);
                     }
 
-                    toastr.success( 'Account created Successfully!!' );
+                    toastr.success( 'Account created Successfully!!', 'Success' );
 
                     //alert("Account created successfully");
                     mail = document.getElementById("em").value="";
@@ -134,7 +134,7 @@
                     sendEmailVerification(auth.currentUser)
                     .then(() => {
                         //alert( "Verification mail has been sent to your email\nPlease check...");
-                        toastr.info('Verification mail has been sent..')
+                        toastr.info('Verification mail has been sent..', 'Verify');
                         // Email verification sent!
                         // ...
                     });
@@ -145,7 +145,7 @@
                     console.log(errorMessage);
                     if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
                         //alert("Account with the email is already in use...");
-                        toastr.error('Account with this email is already in use...');
+                        toastr.error('Account with this email is already in use...', 'Already exists');
                     }
                     window.location.reload();
                 });
