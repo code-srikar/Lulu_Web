@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deposit</title>
     <link rel="stylesheet" href="depo.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
     <div id="mn">
@@ -17,7 +20,7 @@
                     <div id="st">
                             <div id="flexitem"><a href="proj.html">Home</a></div>
                             <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
-                            <div id="flexitem"><a href="contactus.html" style="text-align: center;margin-right: 10px;">Download </a></div>
+                            <div id="flexitem"><a href="download.html" style="text-align: center;margin-right: 10px;">Download </a></div>
                             <div id="flexitem"><a href="contactus.html">Contact Us </a></div>
                     </div>
                     <div id="so">
@@ -73,7 +76,8 @@
             let b = parseInt(a);
             b += y;
             updateDoc(docRef, {amount : b});
-            alert("Deposit has been approved\nAmount deposited successfully...");
+            // alert("Deposit has been approved\nAmount deposited successfully...");
+            toastr.success('Amount deposited successfully','Deposit Approved');
         }
         setTimeout(function(){
             window.location.reload();

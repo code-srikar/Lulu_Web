@@ -143,6 +143,7 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorMessage);
+                    toastr.error(errorMessage);
                     if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
                         //alert("Account with the email is already in use...");
                         toastr.error('Account with this email is already in use...', 'Already exists');
