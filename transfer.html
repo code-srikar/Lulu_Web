@@ -45,7 +45,7 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
     const firebaseConfig = {
       apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
@@ -60,7 +60,7 @@
     const auth = getAuth();
     const db = getFirestore();
 
-    const docRef = doc(db, "User", localStorage.getItem('email'));
+    var docRef = doc(db, "User", localStorage.getItem('email'));
     const docSnap = await getDoc(docRef);
 
     console.log(localStorage.getItem('email'));
@@ -84,16 +84,24 @@
                 let data;
                 let accno = document.getElementById('inp2').value;
                 let code = document.getElementById('inp3').value;
-                data = [y,accno,code];
+                let date = new Date();
+                data = {b,accno,code,date};
                 console.log(data);
-                localStorage.setItem('data',data);
+                console.log(date);
+
+                updateDoc(docRef, {transData : data});
+
+                updateDoc(docRef, {
+                    data : arrayUnion(data)
+                });
+
             }
             else{
                 toastr.error('Insufficient Balance');
             }
-            // setTimeout(function(){
-            //     window.location.reload();
-            // },1000);
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
         }
     });
     document.getElementById('lul').addEventListener("click", () =>{
