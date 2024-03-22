@@ -22,11 +22,12 @@
 }
 #inp{
     position: relative;
-    left: 120px;
+    left: 150px;
     top: 40px;
-    width: 600px;
-    border-radius: 5px;
+    width: 60%;
+    border-radius: 50px;
     padding: 7px;
+    padding-left: 13px;
     margin: 13px;
 
 }

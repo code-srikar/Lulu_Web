@@ -123,13 +123,13 @@
 
                     toastr.success( 'Account created Successfully!!', 'Success' );
 
-                    //alert("Account created successfully");
-                    mail = document.getElementById("em").value="";
-                    password = document.getElementById("pass").value="";
-                    re_password = document.getElementById("passs").value="";
-                    username = document.getElementById("username").value="";
-                    mb_no = document.getElementById("num").value="";
-                    acc_no = document.getElementById("ac").value="";
+                    // //alert("Account created successfully");
+                    // mail = document.getElementById("em").value="";
+                    // password = document.getElementById("pass").value="";
+                    // re_password = document.getElementById("passs").value="";
+                    // username = document.getElementById("username").value="";
+                    // mb_no = document.getElementById("num").value="";
+                    // acc_no = document.getElementById("ac").value="";
 
                     sendEmailVerification(auth.currentUser)
                     .then(() => {
@@ -143,13 +143,17 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorMessage);
-                    toastr.error(errorMessage);
                     if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
                         //alert("Account with the email is already in use...");
                         toastr.error('Account with this email is already in use...', 'Already exists');
                     }
-                    window.location.reload();
+                    else{
+                        toastr.error(errorMessage);
+                    }
                 });
+                    setTimeout(function(){
+                        window.location.reload();
+                    },2000);
             }
             else{
                 //alert("Passwords do not match");

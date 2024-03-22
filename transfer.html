@@ -32,6 +32,7 @@
             </div>
         </div>
         <div id="con">
+            <h1 style="text-align: center; margin: 30px; color: whitesmoke; font-size: 40px;">Transfer Amount</h1>
             <input type="number" class="inp" id="inp1" name="inp1" placeholder="Enter amount">
             <input type="text" class="inp" id="inp2" name="inp2" placeholder="Enter account number">
             <input type="text" class="inp" id="inp3" name="inp3" placeholder="IFSC code">
@@ -75,14 +76,25 @@
             // subtract from balance
             let x = docSnap.data().amount;
             let y = parseInt(x);
-            y -= b;
-            updateDoc(docRef, {amount : y});
-            // alert("Amount transferred...");
-            toastr.success('Amount Tranferred Successfully','Transferred')
+            if(y>=b){
+                y -= b;
+                updateDoc(docRef, {amount : y});
+                // alert("Amount transferred...");
+                toastr.success('Amount Tranferred Successfully','Transferred');
+                let data;
+                let accno = document.getElementById('inp2').value;
+                let code = document.getElementById('inp3').value;
+                data = [y,accno,code];
+                console.log(data);
+                localStorage.setItem('data',data);
+            }
+            else{
+                toastr.error('Insufficient Balance');
+            }
+            // setTimeout(function(){
+            //     window.location.reload();
+            // },1000);
         }
-        setTimeout(function(){
-            window.location.reload();
-        },700);
     });
     document.getElementById('lul').addEventListener("click", () =>{
         window.location.href = 'proj.html';

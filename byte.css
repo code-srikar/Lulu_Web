@@ -87,20 +87,20 @@ button:hover{
 }*/
 
 input[type="text"] {
-    border-radius: 6px;
+    border-radius: 50px;
     border-style: solid;
     width: 50%;
     height: 20px;
-    padding: 3px;
-    padding-left: 8px;
+    padding: 7px;
+    padding-left: 13px;
 }
 input[type="password"] {
-    border-radius: 6px;
+    border-radius: 50px;
     border-style: solid;
     width: 50%;
     height: 20px;
-    padding: 3px;
-    padding-left: 8px;
+    padding: 7px;
+    padding-left: 13px;
 }
 
 .login{
@@ -109,10 +109,10 @@ input[type="password"] {
     height: 20px;
     margin: 2%;
     margin-left: 38%;
-    padding: 5px;
+    padding: 7px;
     text-align: center;
     border-style: solid;
-    border-radius: 7.5px;
+    border-radius: 75px;
     color: rgb(119, 199, 79);
     color: whitesmoke;
     border-color: rgb(119, 199, 79);
