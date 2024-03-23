@@ -38,7 +38,8 @@
             <input type="text" class="inp" id="inp3" name="inp3" placeholder="IFSC code">
             <div id="sub" name="sub">Transfer</div>
         </div>
-    </div>
+    </div><br><br><br>
+    <h2 style="top: 600px; position: absolute;">Last Transfer : <span id="lTrans"></span></h2>
     
 </body>
 <script type="module">
@@ -85,7 +86,8 @@
                 let accno = document.getElementById('inp2').value;
                 let code = document.getElementById('inp3').value;
                 let date = new Date();
-                data = {b,accno,code,date};
+                let flag = 1;
+                data = {b,accno,code,date,flag};
                 console.log(data);
                 console.log(date);
 
@@ -107,6 +109,8 @@
     document.getElementById('lul').addEventListener("click", () =>{
         window.location.href = 'proj.html';
     });
+
+    document.getElementById('lTrans').textContent = "Rs. "+docSnap.data().transData.b;
 
 </script>
 </html>
