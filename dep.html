@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deposit</title>
     <link rel="stylesheet" href="depo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
     <div id="mn">
@@ -17,7 +20,7 @@
                     <div id="st">
                             <div id="flexitem"><a href="proj.html">Home</a></div>
                             <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
-                            <div id="flexitem"><a href="contactus.html" style="text-align: center;margin-right: 10px;">Download </a></div>
+                            <div id="flexitem"><a href="download.html" style="text-align: center;margin-right: 10px;">Download </a></div>
                             <div id="flexitem"><a href="contactus.html">Contact Us </a></div>
                     </div>
                     <div id="so">
@@ -41,7 +44,7 @@
 <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
     const firebaseConfig = {
       apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
@@ -61,19 +64,29 @@
     console.log(localStorage.getItem('email'));
 
     document.getElementById('sub').addEventListener("click",function(){
-        var x = document.getElementById('inp').value;
-        var y = parseInt(x);
+        var a = document.getElementById('inp').value;
+        var b = parseInt(a);
 
-        if (x == ""){ 
+        if (a == ""){ 
           alert("Please enter an amount");
         }
         else {
             // add to balance
-            let a = docSnap.data().amount;
-            let b = parseInt(a);
-            b += y;
-            updateDoc(docRef, {amount : b});
-            alert("Deposit has been approved\nAmount deposited successfully...");
+            let x = docSnap.data().amount;
+            let y = parseInt(a);
+            let flag = 0;
+            let date = new Date();
+            y += b;
+
+            let data = {b,accno : "Self",code : "90869",date,flag};
+
+            updateDoc(docRef, {amount : y});
+
+            updateDoc(docRef, {
+                data : arrayUnion(data)
+            });
+            // alert("Deposit has been approved\nAmount deposited successfully...");
+            toastr.success('Amount deposited successfully','Deposit Approved');
         }
         setTimeout(function(){
             window.location.reload();

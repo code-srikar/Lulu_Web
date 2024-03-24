@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer</title>
     <link rel="stylesheet" href="transfer.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
     <div id="mn">
@@ -17,7 +20,7 @@
                     <div id="st">
                             <div id="flexitem"><a href="proj.html">Home</a></div>
                             <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
-                            <div id="flexitem"><a href="contactus.html" style="text-align: center;margin-right: 10px;">Download </a></div>
+                            <div id="flexitem"><a href="download.html" style="text-align: center;margin-right: 10px;">Download </a></div>
                             <div id="flexitem"><a href="contactus.html">Contact Us </a></div>
     </div>
                     <div id="so">
@@ -29,19 +32,21 @@
             </div>
         </div>
         <div id="con">
+            <h1 style="text-align: center; margin: 30px; color: whitesmoke; font-size: 40px;">Transfer Amount</h1>
             <input type="number" class="inp" id="inp1" name="inp1" placeholder="Enter amount">
             <input type="text" class="inp" id="inp2" name="inp2" placeholder="Enter account number">
             <input type="text" class="inp" id="inp3" name="inp3" placeholder="IFSC code">
             <div id="sub" name="sub">Transfer</div>
         </div>
-    </div>
+    </div><br><br><br>
+    <h2 style="top: 600px; position: absolute;">Last Transfer : <span id="lTrans"></span></h2>
     
 </body>
 <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
     const firebaseConfig = {
       apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
@@ -56,7 +61,7 @@
     const auth = getAuth();
     const db = getFirestore();
 
-    const docRef = doc(db, "User", localStorage.getItem('email'));
+    var docRef = doc(db, "User", localStorage.getItem('email'));
     const docSnap = await getDoc(docRef);
 
     console.log(localStorage.getItem('email'));
@@ -72,17 +77,40 @@
             // subtract from balance
             let x = docSnap.data().amount;
             let y = parseInt(x);
-            y -= b;
-            updateDoc(docRef, {amount : y});
-            alert("Amount transferred...");
+            if(y>=b){
+                y -= b;
+                updateDoc(docRef, {amount : y});
+                // alert("Amount transferred...");
+                toastr.success('Amount Tranferred Successfully','Transferred');
+                let data;
+                let accno = document.getElementById('inp2').value;
+                let code = document.getElementById('inp3').value;
+                let date = new Date();
+                let flag = 1;
+                data = {b,accno,code,date,flag};
+                console.log(data);
+                console.log(date);
+
+                updateDoc(docRef, {transData : data});
+
+                updateDoc(docRef, {
+                    data : arrayUnion(data)
+                });
+
+            }
+            else{
+                toastr.error('Insufficient Balance');
+            }
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
         }
-        setTimeout(function(){
-            window.location.reload();
-        },700);
     });
     document.getElementById('lul').addEventListener("click", () =>{
         window.location.href = 'proj.html';
     });
+
+    document.getElementById('lTrans').textContent = "Rs. "+docSnap.data().transData.b;
 
 </script>
 </html>
