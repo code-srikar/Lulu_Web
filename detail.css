@@ -21,9 +21,9 @@
     width: 1000px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: space-around;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* align-content: space-around; */
     border-radius: 20px;
 }
 
@@ -78,15 +78,17 @@
     text-align: end;
 }
 #imp{
+    position: relative;
     border-radius: 50%;
     height: 28px;
-    top:2px;
-    margin-left: 15px;
+    top:10px;
+    margin-left: 10px;
     margin-right: 10px;
 }
 #so{
     position: relative;
-    top: 10px;
+    width: 32px;
+    height: 28px;
     text-align: right;
     justify-content: space-evenly;
     right: 10px;
@@ -115,8 +117,4 @@ a{
     color: black;
     text-decoration: none;
 
-}
-a{
-    text-decoration: none;
-    color: black;
 }
