@@ -63,12 +63,20 @@
 
     var docRef = doc(db, "User", localStorage.getItem('email'));
     const docSnap = await getDoc(docRef);
+    var recDoc;
 
     console.log(localStorage.getItem('email'));
 
     document.getElementById('sub').addEventListener("click",function(){
         var a = document.getElementById('inp1').value;
         var b = parseInt(a);
+
+        console.log(document.getElementById('inp2').value.toString());
+        var recMail = document.getElementById('inp2').value.toString();
+        console.log(recMail.includes("@"))
+        if(recMail.includes("@")){
+            var dt = recSnap.data();
+        }
 
         if (a == "" || document.getElementById('inp2').value == "" || document.getElementById('inp3').value == ""){ 
             alert("Please fill all the details");
@@ -79,6 +87,7 @@
             let y = parseInt(x);
             if(y>=b){
                 y -= b;
+                // let p = recSnap.data().amount;
                 updateDoc(docRef, {amount : y});
                 // alert("Amount transferred...");
                 toastr.success('Amount Tranferred Successfully','Transferred');
@@ -101,9 +110,9 @@
             else{
                 toastr.error('Insufficient Balance');
             }
-            setTimeout(function(){
-                window.location.reload();
-            },1000);
+            // setTimeout(function(){
+            //     window.location.reload();
+            // },1000);
         }
     });
     document.getElementById('lul').addEventListener("click", () =>{
