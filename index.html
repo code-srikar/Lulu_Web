@@ -98,7 +98,7 @@
                 toastr.warning('Password should at least be 6 characters long');
             }
             else {
-                if(password == re_password){
+                if(password == re_password && mb_no.length == 10 && acc_no.length == 12){
         
                 createUserWithEmailAndPassword(auth,mail,password)
                 .then((userCredential) =>{
@@ -156,7 +156,15 @@
             }
             else{
                 //alert("Passwords do not match");
-                toastr.warning('Password does not match');
+                if(password != re_password){
+                    toastr.warning('Passwords does not match');
+                }
+                else if(mb_no.length != 10){
+                    toastr.warning('Enter a valid mobile numbe of 10 digits','Invalid Mobile Number');
+                }
+                else if(acc_no.length != 12){
+                    toastr.warning('Account number should be of 12 digits', 'Invalid Account Number');
+                }
             }}
             }else{
                 // alert('Please fill all the fields');
