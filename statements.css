@@ -8,6 +8,7 @@
     left: 0;
     right: 0;
     justify-content: center;
+    font-family: sans-serif;
     /* background-color: rgba(202,237,247,0.993); */
 }
 #imag{
@@ -30,7 +31,7 @@
 #flexitem{
     position: relative;
     top:5px;
-    width:75px;
+    width:85px;
     text-align: end;
 }
 
