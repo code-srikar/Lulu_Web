@@ -26,11 +26,27 @@
                 </div>
             </div>
         </div>
-        <h2 style="cursor: pointer;" id="stmts">Statements</h2>
+        <div id="dd">
+        <div class="sidenav">
+            <a href="#"><p style="cursor: pointer;" id="stmts">Statements</p></a>
+            <a href="#" id="serv">edit</a>
+            <a href="#">block</a>
+            <a href="#">new</a>
+            <a href="#">add</a>
+          </div>
+          <div class="main">
+        
+          </div>
+          </div>
+        
     </div>
     
 </body>
 <script type="module">
+
+    document.getElementById('serv').addEventListener("click", () =>{
+        window.location.href= "" ;
+    });
 
     document.getElementById('stmts').addEventListener("click", () =>{
         window.location.href = "statements.html";
