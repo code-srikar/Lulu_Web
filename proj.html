@@ -87,6 +87,21 @@
     const mail = localStorage.getItem('email');
     console.log("Logged in with "+mail)
 
+    if(document.fullscreenElement == null){
+        document.getElementById("mn").style.visibility = "hidden";
+        document.addEventListener("dblclick",() => {
+            document.documentElement.requestFullscreen();
+            document.getElementById('it3').addEventListener("click",() => {
+                window.location.replace('deposit.html');
+            })
+            document.getElementById("mn").style.visibility = "visible";
+            document.addEventListener("dblclick",() => {
+                document.exitFullscreen();
+                window.location.reload();
+            })
+        })
+    }
+
     const docRef = doc(db, "User", mail);
     const docSnap = await getDoc(docRef);
 

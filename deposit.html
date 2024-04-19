@@ -26,28 +26,41 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="cont">
-        <div id="ite1">
-            <a href="transfer.html">
-            <div id="cbx">
-                    <img src="banktransfer.png" alt="" id="img">
-                        <h3>Transfer</h3>
+        <div id="cont">
+            <div id="ite1">
+                <a href="transfer.html">
+                <div id="cbx">
+                        <img src="banktransfer.png" alt="" id="img">
+                            <h3>Transfer</h3>
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
-        <div id="ite2">
-            <a href="dep.html">
-            <div id="cbx">
-                    <img src="depo.png" alt="" id="img">
-                        <h3>Deposit</h3>
+            <div id="ite2">
+                <a href="dep.html">
+                <div id="cbx">
+                        <img src="depo.png" alt="" id="img">
+                            <h3>Deposit</h3>
+                </div>
+                </a>
             </div>
-            </a>
         </div>
     </div>
     
 </body>
 <script type="module">
+
+    if(document.fullscreenElement == null){
+        document.getElementById("mn").style.visibility = "hidden";
+        document.addEventListener("dblclick",() => {
+            document.documentElement.requestFullscreen();
+            document.getElementById("mn").style.visibility = "visible";
+            document.addEventListener("dblclick",() => {
+                document.exitFullscreen();
+                window.location.reload();
+            })
+        })
+    }
+
     document.getElementById('lul').addEventListener("click", () =>{
         window.location.href = 'proj.html';
     });
