@@ -10,7 +10,7 @@
     <div id="mn">
         <div id="bx2">
             <div id="dtl">
-                <h2 id="lul" >LULU Bank</h2>
+                <h2 id="lul" ></h2>
             </div>
            <div id="dtr">
                 <div id="st">
@@ -27,16 +27,14 @@
             </div>
         </div>
         <div id="cont">
-            <div id="ite1">
-                <a href="transfer.html">
+            <div id="ite1" style="cursor: pointer;">
                 <div id="cbx">
                         <img src="banktransfer.png" alt="" id="img">
                             <h3>Transfer</h3>
                 </div>
                 </a>
             </div>
-            <div id="ite2">
-                <a href="dep.html">
+            <div id="ite2" style="cursor: pointer;">
                 <div id="cbx">
                         <img src="depo.png" alt="" id="img">
                             <h3>Deposit</h3>
@@ -49,20 +47,18 @@
 </body>
 <script type="module">
 
-    if(document.fullscreenElement == null){
-        document.getElementById("mn").style.visibility = "hidden";
-        document.addEventListener("dblclick",() => {
-            document.documentElement.requestFullscreen();
-            document.getElementById("mn").style.visibility = "visible";
-            document.addEventListener("dblclick",() => {
-                document.exitFullscreen();
-                window.location.reload();
-            })
-        })
-    }
+    document.getElementById('ite1').addEventListener("click",() => {
+        window.location.replace('transfer.html');
+    })
+
+    document.getElementById('ite2').addEventListener("click",() => {
+        window.location.replace('dep.html');
+    })
+
+    document.getElementById('lul').textContent = "< back"
 
     document.getElementById('lul').addEventListener("click", () =>{
-        window.location.href = 'proj.html';
+        window.location.replace('proj.html');
     });
 </script>
 </html>

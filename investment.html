@@ -10,7 +10,7 @@
     <div id="mn">
         <div id="bx2">
             <div id="dtl">
-                <h2 id="lul" >LULU Bank</h2>
+                <h2 id="lul" ></h2>
             </div>
            <div id="dtr">
                 <div id="st">
@@ -28,16 +28,14 @@
         </div>
     </div>
     <div id="cont">
-        <div id="ite1">
-            <a href="fd.html">
+        <div id="ite1" style="cursor: pointer;">
                 <div id="cbx">
                     <img src="moneybag.png" alt="" id="img">
                         <h3>Fixed Deposit</h3>
                 </div>
             </a>
         </div>
-        <div id="ite2">
-            <a href="sip.html">
+        <div id="ite2" style="cursor: pointer;">
                 <div id="cbx">
                     <img src="payday.png" alt="" id="img">
                         <h3>S I P</h3>
@@ -47,8 +45,19 @@
     </div>
 </body>
 <script type="module">
+
+    document.getElementById('lul').textContent = "< back";
+
+    document.getElementById('ite1').addEventListener("click",() => {
+        window.location.replace('fd.html');
+    });
+
+    document.getElementById('ite2').addEventListener("click",() => {
+        window.location.replace('sip.html');
+    });
+
     document.getElementById('lul').addEventListener("click", () =>{
-        window.location.href = 'proj.html';
+        window.location.replace('proj.html');
     });
 </script>
 </html>

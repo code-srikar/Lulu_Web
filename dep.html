@@ -14,7 +14,7 @@
         <div id="mn1">
             <div id="bx2">
                 <div id="dtl">
-                    <h2 id="lul" >LULU Bank</h2>
+                    <h2 id="lul" ></h2>
                 </div>
                <div id="dtr">
                     <div id="st">
@@ -93,8 +93,10 @@
         // },1500);
     });
 
+    document.getElementById('lul').textContent = "< back";
+
     document.getElementById('lul').addEventListener("click", () =>{
-        window.location.href = 'proj.html';
+        window.location.replace('deposit.html');
     });
 
 </script>
