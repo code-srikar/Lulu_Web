@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service</title>
     <link rel="stylesheet" href="service.css">
 </head>
+
 <body>
     <div id="mn">
         <div id="bx2">
             <div id="dtl">
-                <h2 id="lul" ></h2>
+                <h2 id="lul"></h2>
             </div>
             <div id="dtr">
-                 <div id="st">
-                     <div id="flexitem"><a style="cursor: pointer;" onclick="window.location.replace('proj.html')">Home</a></div>
-                     <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('about.html')">About</a></div>
-                     <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('download.html')">Download </a></div>
-                     <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('contactus.html')">Contact Us </a></div>
-                 </div>
-                 <div id="so">
-                     <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
-                         <img src="prof.png" alt="profile pic" id="imp">
-                     </a>
-                 </div>
+                <div id="st">
+                    <div id="flexitem"><a style="cursor: pointer;"
+                            onclick="window.location.replace('proj.html')">Home</a></div>
+                    <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                            onclick="window.location.replace('about.html')">About</a></div>
+                    <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                            onclick="window.location.replace('download.html')">Download </a></div>
+                    <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                            onclick="window.location.replace('contactus.html')">Contact Us </a></div>
+                </div>
+                <div id="so">
+                    <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
+                        <img src="prof.png" alt="profile pic" id="imp">
+                    </a>
+                </div>
             </div>
         </div>
         <div id="dd">
-        <div class="sidenav">
-            <a href="#"><p style="cursor: pointer;" id="stmts">Statements</p></a>
-            <a href="#" id="serv">edit</a>
-            <a href="#">block</a>
-            <a href="#">new</a>
-            <a href="#">add</a>
-          </div>
-          <div class="main">
-        
-          </div>
-          </div>
-        
+            <div class="sidenav">
+                <a href="#" id="stmts">Statements</a>
+                <a href="#" id="serv">Edit</a>
+                <a id="bl">Block</a>
+                <a href="#">New</a>
+                <a href="#">Add</a>
+            </div>
+            <div id="main">
+
+            </div>
+        </div>
+
     </div>
-    
+
 </body>
 <script type="module">
 
-    document.getElementById('serv').addEventListener("click", () =>{
-        window.location.href= "" ;
+    document.getElementById('bl').addEventListener("click", () => {
+
+        const x = document.createElement("button");
+        x.innerHTML = 'Block Account';
+        x.id = "block";
+        x.style.background = "green";
+        x.style.color = 'white';
+        document.getElementById('main').appendChild(x);
+        x.style.zIndex = -1;
+        console.log("Success");
     });
 
-    document.getElementById('stmts').addEventListener("click", () =>{
-        window.location.href = "statements.html";
+    document.getElementById('serv').addEventListener("click", () => {
+        window.location.href = "";
+    });
+
+    document.getElementById('stmts').addEventListener("click", () => {
+        window.location.replace('statements.html');
     });
 
     document.getElementById('lul').textContent = "< back";
 
-    document.getElementById('lul').addEventListener("click", () =>{
+    document.getElementById('lul').addEventListener("click", () => {
         window.location.replace('proj.html');
     });
 </script>
+
 </html>
