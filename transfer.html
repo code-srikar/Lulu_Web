@@ -52,8 +52,7 @@
             <div id="sub" name="sub">Transfer</div>
         </div>
          -->
-    </div><br><br><br>
-    <h2 style="top: 600px; position: absolute;">Last Transfer : <span id="lTrans"></span></h2>
+    </div>
 
 </body>
 <script type="module">
@@ -105,42 +104,56 @@
             // subtract from balance
             let x = docSnap.data().amount;
             let y = parseInt(x);
-            if (y >= b) {
-                y -= b;
-                // console.log(p);
-                const docSnap1 = getDoc(docRef1).then((docSnap) => {
-                    if (docSnap.exists()) {
+            // console.log(p);
+            const docSnap1 = getDoc(docRef1).then((docSnap) => {
+                if (docSnap.exists()) {
+                    if (y >= b) {
+                        y -= b;
                         let p = docSnap.data().amount;
                         let q = parseInt(p);
                         q += b;
                         updateDoc(docRef1, { amount: q });
                         // console.log(docSnap.data().amount);
+                        let data;
+                        let accno = docSnap.data().email;
+                        let code = 90869;
+                        let date = new Date();
+                        let flag = 0;
+                        data = { b, accno, code, date, flag };
+
+                        updateDoc(docRef1, { transData: data });
+
+                        updateDoc(docRef1, {
+                            data: arrayUnion(data)
+                        });
+                        updateDoc(docRef, { amount: y });
+                        accno = document.getElementById('inp2').value;
+                        code = document.getElementById('inp3').value;
+                        date = new Date();
+                        flag = 1;
+                        data = { b, accno, code, date, flag };
+                        // console.log(data);
+                        // console.log(date);
+
+                        updateDoc(docRef, { transData: data });
+
+                        updateDoc(docRef, {
+                            data: arrayUnion(data)
+                        });
+                        // alert("Amount transferred...");
+                        toastr.success('Amount Tranferred Successfully', 'Transferred');
+
                     }
-                }).catch((err) => {
-                    console.log(err);
-                });
-                updateDoc(docRef, { amount: y });
-                // alert("Amount transferred...");
-                toastr.success('Amount Tranferred Successfully', 'Transferred');
-                let data;
-                let accno = document.getElementById('inp2').value;
-                let code = document.getElementById('inp3').value;
-                let date = new Date();
-                let flag = 1;
-                data = { b, accno, code, date, flag };
-                // console.log(data);
-                // console.log(date);
-
-                updateDoc(docRef, { transData: data });
-
-                updateDoc(docRef, {
-                    data: arrayUnion(data)
-                });
-
-            }
-            else {
-                toastr.error('Insufficient Balance');
-            }
+                    else {
+                        toastr.error('Insufficient Balance');
+                    }
+                }
+                else {
+                    console.log("No such document!");
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
             // setTimeout(function(){
             //     window.location.reload();
             // },1000);
@@ -151,8 +164,6 @@
     document.getElementById('lul').addEventListener("click", () => {
         window.location.replace("deposit.html");
     });
-
-    document.getElementById('lTrans').textContent = "Rs. " + docSnap.data().transData.b;
 
 </script>
 
