@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIP</title>
     <link rel="stylesheet" href="sip.css">
 </head>
+
 <body>
     <div id="mn">
         <div id="mn1">
             <div id="bx2">
                 <div id="dtl">
-                    <h2 id="lul" ></h2>
+                    <h2 id="lul"></h2>
                 </div>
                 <div id="dtr">
-                     <div id="st">
-                         <div id="flexitem"><a style="cursor: pointer;" onclick="window.location.replace('proj.html')">Home</a></div>
-                         <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('about.html')">About</a></div>
-                         <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('download.html')">Download </a></div>
-                         <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;" onclick="window.location.replace('contactus.html')">Contact Us </a></div>
-                     </div>
-                     <div id="so">
-                         <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
-                             <img src="prof.png" alt="profile pic" id="imp">
-                         </a>
-                     </div>
+                    <div id="st">
+                        <div id="flexitem"><a style="cursor: pointer;"
+                                onclick="window.location.replace('proj.html')">Home</a></div>
+                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                                onclick="window.location.replace('about.html')">About</a></div>
+                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                                onclick="window.location.replace('download.html')">Download </a></div>
+                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
+                                onclick="window.location.replace('contactus.html')">Contact Us </a></div>
+                    </div>
+                    <div id="so">
+                        <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
+                            <img src="prof.png" alt="profile pic" id="imp">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="con">
-            <p id="title">initiate  investment</p>
-            <input type="number" id="inp" placeholder="Enter amount for sip">
+            <p id="title">Initiate Your Investment</p>
+            <input type="number" id="amount" class="inp" placeholder="Enter amount for SIP">
             <!-- <input type="text" id="inp" placeholder="sd"> -->
-            <input type="number" id="inp" min="1" step="1" placeholder="enter tenure in month">
+            <input type="number" class="inp" id="tenure" min="1" step="1" placeholder="Enter Tenure (in months)">
             <!-- <div id="sub" name="sub">sip</div> -->
             <!-- <fieldset class="range__field">
                 <input class="range" type="range" min="0" max="10">
@@ -63,16 +69,78 @@
                    <text class="range__point" x="100%" y="14" text-anchor="end">10</text>
                 </svg>
              </fieldset> -->
-             <div id="sub" name="sub">sip</div>
-            
+            <div id="sub" name="sub">Start SIP</div>
+
         </div>
     </div>
 </body>
-<script>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+        authDomain: "lulu-bank-90869.firebaseapp.com",
+        projectId: "lulu-bank-90869",
+        storageBucket: "lulu-bank-90869.appspot.com",
+        messagingSenderId: "695316046662",
+        appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore();
+
+    var docRef = doc(db, "User", localStorage.getItem('email'));
+    const docSnap = await getDoc(docRef);
+
+    document.getElementById('sub').addEventListener("click", () => {
+        var a = document.getElementById('amount').value;
+        var a1 = parseInt(a);
+        var t = document.getElementById('tenure').value;
+        var t1 = parseInt(t);
+
+        if (a == "" || t == "") {
+            alert("Please fill the fields");
+        }
+        else {
+            let p = docSnap.data().amount;
+            let q = parseInt(p);
+
+            if (q < a1) {
+                alert("Insufficient Balance!");
+            }
+            else {
+                q -= a1;
+
+                updateDoc(docRef, { amount: q });
+                let data;
+                let b = a1;
+                let accno = "SIP";
+                let code = 90869;
+                let date = new Date();
+                let flag = 1;
+                data = { b, accno, code, date, flag };
+
+                updateDoc(docRef, { transData: data });
+
+                updateDoc(docRef, {
+                    data: arrayUnion(data)
+                });
+
+                console.log("Success");
+                console.log(a1)
+            }
+        }
+    });
+
     document.getElementById('lul').textContent = "< back";
 
-    document.getElementById('lul')/addEventListener("click",() => {
+    document.getElementById('lul').addEventListener("click", () => {
         window.location.replace('investment.html');
     });
 </script>
+
 </html>

@@ -55,6 +55,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -71,8 +72,9 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
+    const db = getFirestore();
 
-    console.log(app);
+    // console.log(app);
 
     document.getElementById("reg").addEventListener("click", function () {
         window.location.replace('index.html');
@@ -82,39 +84,53 @@
         var mail = document.getElementById("email").value;
         var password = document.getElementById("pass").value;
 
+        var docRef = doc(db, "User", mail);
+        const docSnap = getDoc(docRef);
+
         if (password != "" && mail != "") {
 
             password = window.btoa(password);
             console.log(password);
 
-            signInWithEmailAndPassword(auth, mail, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log(user);
-                    var status = user.emailVerified;
-                    console.log("Is verified : " + status);
-                    if (status == true) {
-                        localStorage.setItem('email', mail);
-                        window.location.reload();
-                        window.location.replace('proj.html');
+            const docSnsp1 = getDoc(docRef).then((docSnap) => {
+                if (docSnap.exists()) {
+
+                    if (docSnap.data().bFlag == 1) {
+
+                        signInWithEmailAndPassword(auth, mail, password)
+                            .then((userCredential) => {
+                                const user = userCredential.user;
+                                console.log(user);
+                                var status = user.emailVerified;
+                                console.log("Is verified : " + status);
+                                if (status == true) {
+                                    localStorage.setItem('email', mail);
+                                    window.location.reload();
+                                    window.location.replace('proj.html');
+                                }
+                                else {
+                                    //alert("Your email is not verified!\nPlease verify your email to proceed further...");
+                                    toastr.warning('Please verify your email before proceeding further...', 'Not Verified');
+                                    // toastr.options.progressBar = true;
+                                    // setTimeout(function() {localStorage.clear(); window.location.reload()}, 6500);
+                                    // window.location.reload();
+                                }
+                            })
+                            .catch((error) => {
+                                const errorCode = error.code;
+                                const errorMessage = error.message;
+                                console.log(errorMessage);
+                                if (errorMessage == "Firebase: Error (auth/invalid-credential).") {
+                                    // alert("Invalid credentials!!\nPlease try again with correct details.");
+                                    toastr.error('Please try again with correct details.', 'Invalid Credentials');
+                                }
+                            });
                     }
                     else {
-                        //alert("Your email is not verified!\nPlease verify your email to proceed further...");
-                        toastr.warning('Please verify your email before proceeding further...', 'Not Verified');
-                        // toastr.options.progressBar = true;
-                        // setTimeout(function() {localStorage.clear(); window.location.reload()}, 6500);
-                        // window.location.reload();
+                        alert("Account is currently blocked\nPlease contact the Administrator..");
                     }
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorMessage);
-                    if (errorMessage == "Firebase: Error (auth/invalid-credential).") {
-                        // alert("Invalid credentials!!\nPlease try again with correct details.");
-                        toastr.error('Please try again with correct details.', 'Invalid Credentials');
-                    }
-                });
+                }
+            })
         }
         else {
             // alert('Please fill all the fields');

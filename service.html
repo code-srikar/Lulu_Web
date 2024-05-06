@@ -34,9 +34,9 @@
         </div>
         <div id="dd">
             <div class="sidenav">
-                <a href="#" id="stmts">Statements</a>
+                <a style="cursor: pointer;" id="stmts">Statements</a>
                 <a href="#" id="serv">Edit</a>
-                <a id="bl">Block</a>
+                <a id="bl" style="cursor: pointer;">Block</a>
                 <a href="#">New</a>
                 <a href="#">Add</a>
             </div>
@@ -49,6 +49,30 @@
 
 </body>
 <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+        authDomain: "lulu-bank-90869.firebaseapp.com",
+        projectId: "lulu-bank-90869",
+        storageBucket: "lulu-bank-90869.appspot.com",
+        messagingSenderId: "695316046662",
+        appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore();
+
+    var docRef = doc(db, "User", localStorage.getItem('email'));
+    const docSnap = await getDoc(docRef);
 
     document.getElementById('bl').addEventListener("click", () => {
 
@@ -60,6 +84,23 @@
         document.getElementById('main').appendChild(x);
         x.style.zIndex = -1;
         console.log("Success");
+
+        document.getElementById('block').addEventListener("click", () => {
+
+            let x = confirm("Are you sure to block your account?");
+            if (x) {
+                let b = 0;
+                updateDoc(docRef, { bFlag: b });
+                // console.log(docSnap.data());
+                setTimeout(function () {
+                    signOut(auth).then(() => {
+                        localStorage.clear();
+                        window.location.replace('byte.html');
+                    })
+                }, 900)
+            }
+        })
+
     });
 
     document.getElementById('serv').addEventListener("click", () => {
