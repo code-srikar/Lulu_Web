@@ -1,4 +1,4 @@
-#mn{
+#mn {
     position: absolute;
     margin: auto;
     size: 1000dp;
@@ -10,14 +10,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(202,237,247,0.993);
+    background-color: rgba(202, 237, 247, 0.993);
 }
-#det{
+
+#det {
     /* background-color: rgba(202,237,247,0.993); */
     background-color: whitesmoke;
     color: rgb(100, 173, 64);
     position: relative;
-    height: 520px;
+    margin-top: 7%;
+    height: 550px;
     width: 1000px;
     display: flex;
     flex-direction: column;
@@ -28,7 +30,7 @@
     padding-left: 30px;
 }
 
-#signout{
+#signout {
     background-color: red;
     color: white;
     padding: 10px;
@@ -37,13 +39,13 @@
     border-style: solid;
 }
 
-#signout:hover{
+#signout:hover {
     cursor: pointer;
     border-color: whitesmoke;
     border-style: solid;
 }
 
-#mn1{
+#mn1 {
     position: absolute;
     margin: auto;
     size: 1000dp;
@@ -53,69 +55,96 @@
     left: 0;
     right: 0;
     justify-content: center;
-    background-color: rgba(202,237,247,0.993);
+    background-color: rgba(202, 237, 247, 0.993);
 }
-#imag{
+
+#imag {
     position: relative;
-    top:12px;
+    top: 12px;
     height: 85px;
 }
-#bx2{
+
+#bx2 {
     display: flex;
     background-color: whitesmoke;
     height: 9%;
     width: auto;
 }
-#dtr,#dtl{
+
+#dtr,
+#dtl {
     position: relative;
     display: inline-block;
-    width:49%;
+    width: 49%;
     height: auto;
 }
-#flexitem{
+
+#flexitem {
     position: relative;
-    top:5px;
-    width:75px;
+    top: 5px;
+    width: 75px;
     text-align: end;
 }
-#imp{
+
+#imp {
     position: relative;
     border-radius: 50%;
     height: 28px;
-    top:10px;
+    top: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
-#so{
+
+#so {
     position: relative;
     width: 32px;
     height: 28px;
     text-align: right;
     justify-content: space-evenly;
     right: 10px;
-    width:30px;
+    width: 30px;
 }
-#lul{
+
+#lul {
     color: rgb(100, 173, 64);
     font-family: sans-serif;
     margin-top: 20px;
     justify-content: center;
     margin-left: 30px;
 }
-#st{
+
+#st {
     position: relative;
     top: 10px;
     display: flex;
     justify-content: end;
     margin-right: 15px;
 }
-#dtr{
+
+#dtr {
     display: flex;
     top: 7px;
     justify-content: end;
 }
-a{
+
+a {
     color: black;
     text-decoration: none;
 
+}
+
+.close {
+    margin-top: 8.5px;
+    margin-left: 94.5%;
+}
+
+.clsbut {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    padding: 6px;
+}
+
+.clsbut:hover {
+    cursor: pointer;
 }
