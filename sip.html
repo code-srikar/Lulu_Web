@@ -13,18 +13,17 @@
         <div id="mn1">
             <div id="bx2">
                 <div id="dtl">
-                    <h2 id="lul"></h2>
+                    <button id="btn"><i class="fa fa-close"></i> Close</button>
                 </div>
                 <div id="dtr">
                     <div id="st">
-                        <div id="flexitem"><a style="cursor: pointer;"
-                                onclick="window.location.replace('proj.html')">Home</a></div>
-                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
-                                onclick="window.location.replace('about.html')">About</a></div>
-                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
-                                onclick="window.location.replace('download.html')">Download </a></div>
-                        <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
-                                onclick="window.location.replace('contactus.html')">Contact Us </a></div>
+                        <div id="flexitem"><a id="flexitem1" style="cursor: pointer;"
+                                onclick="window.location.replace('proj.html')"><u>Home</u></a></div>
+                        <div id="flexitem" style="text-align: center;"><a id="flexitem1" style="cursor: pointer;"
+                                onclick="window.location.replace('about.html')"><u>About</u></a></div>
+
+                        <div id="flexitem" style="text-align: center;"><a id="flexitem1" style="cursor: pointer;"
+                                onclick="window.location.replace('contactus.html')"><u>ContactUs</u></a></div>
                     </div>
                     <div id="so">
                         <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
@@ -35,10 +34,11 @@
             </div>
         </div>
         <div id="con">
-            <p id="title">Initiate Your Investment</p>
+            <p id="title">Systematic Investment Plan📈</p>
             <input type="number" id="amount" class="inp" placeholder="Enter amount for SIP">
             <!-- <input type="text" id="inp" placeholder="sd"> -->
             <input type="number" class="inp" id="tenure" min="1" step="1" placeholder="Enter Tenure (in months)">
+            <input type="number" id="Returns" class="inp" placeholder="Expected Returns">
             <!-- <div id="sub" name="sub">sip</div> -->
             <!-- <fieldset class="range__field">
                 <input class="range" type="range" min="0" max="10">
@@ -136,11 +136,15 @@
         }
     });
 
-    document.getElementById('lul').textContent = "< back";
 
-    document.getElementById('lul').addEventListener("click", () => {
+    document.getElementById('btn').addEventListener("click", () => {
         window.location.replace('investment.html');
     });
+    const amo = document.getElementById('amount').value;
+    const mon = document.getElementById('tenure').value;
+    const intrest = (amo * mon * 10);
+    console.log(intrest)
+    document.getElementById('Returns').textContent = intrest;
 </script>
 
 </html>
