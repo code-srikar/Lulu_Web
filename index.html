@@ -42,7 +42,7 @@
 
                 <input type="email" name="em" id="em" placeholder="Enter Email address" required><br><br>
 
-                <input type="text" name="ac" id="ac" placeholder="Enter Account number" required>
+                <!-- <input type="text" name="ac" id="ac" placeholder="Enter Account number" required> -->
                 <div class="sign" id="signup" name="signup">SignUp</div>
                 <!--<p>Existing Customer?<a href="byte.html">Click Here</a></p>-->
                 <!--<button type="submit" name="signup" id="signup" >Sign Up</button>-->
@@ -93,15 +93,25 @@
         var re_password = document.getElementById("passs").value;
         var username = document.getElementById("username").value;
         var mb_no = document.getElementById("num").value;
-        var acc_no = document.getElementById("ac").value;
+        const ran = Math.random(100000000000, 999999999999) * 1000000000000;
+        var acc_no = Math.floor(ran);
 
-        if (mail != "" && password != "" && re_password != "" && username != "" && mb_no != "" && acc_no != "") {
-            if (password.toString().length < 6) {
-                // alert('Password should be at least 6 characters long');
-                toastr.warning('Password should at least be 6 characters long');
+        if (mail != "" && password != "" && re_password != "" && username != "" && mb_no != "") {
+
+            if (!password.match(".{8,20}")) {
+                toastr.warning("Password should be minimum 8 characters");
+            }
+            // else if (!password.match("(?=.*\d)")) {
+            //     toastr.warning("Password should contain atleast one digit");
+            // }
+            else if (!password.match("(?=.*[@#$%^&+=])")) {
+                toastr.warning("Password should contain atleast one special character");
+            }
+            else if (!password.match("(?=.*[A-Z])")) {
+                toastr.warning("Password must contain atleast one capital letter");
             }
             else {
-                if (password == re_password && mb_no.length == 10 && acc_no.length == 12) {
+                if (password == re_password && mb_no.length == 10) {
 
                     var encoded = window.btoa(password);
                     // console.log(encoded);
@@ -127,7 +137,6 @@
                             } catch (e) {
                                 console.error("Error adding document: ", e);
                             }
-
                             toastr.success('Account created Successfully!!', 'Success');
 
                             // //alert("Account created successfully");
@@ -169,9 +178,6 @@
                     }
                     else if (mb_no.length != 10) {
                         toastr.warning('Enter a valid mobile numbe of 10 digits', 'Invalid Mobile Number');
-                    }
-                    else if (acc_no.length != 12) {
-                        toastr.warning('Account number should be of 12 digits', 'Invalid Account Number');
                     }
                 }
             }
