@@ -1,12 +1,14 @@
-body{
+body {
     background-color: rgba(202, 237, 247, 0.993);
 }
-.first{
+
+.first {
     z-index: 1;
     position: relative;
     margin-top: 8%;
 }
-#mn{
+
+#mn {
     position: absolute;
     margin: auto;
     size: 1000dp;
@@ -16,79 +18,90 @@ body{
     left: 0;
     right: 0;
     justify-content: center;
-    background-color: rgba(202,237,247,0.993);
+    background-color: rgba(202, 237, 247, 0.993);
 }
-#imag{
+
+#imag {
     position: relative;
-    top:12px;
+    top: 12px;
     height: 85px;
 }
-#bx2{
+
+#bx2 {
     display: flex;
     background-color: whitesmoke;
     height: 9%;
     width: auto;
 }
-#dtr,#dtl{
+
+#dtr,
+#dtl {
     position: relative;
     display: inline-block;
-    width:49%;
+    width: 49%;
     height: auto;
 }
-#flexitem{
+
+#flexitem {
     position: relative;
-    top:5px;
-    width:75px;
+    top: 5px;
+    width: 75px;
     text-align: end;
 }
-#imp{
+
+#imp {
     border-radius: 50%;
     height: 28px;
-    top:2px;
+    top: 2px;
     margin-left: 15px;
     margin-right: 10px;
 }
-#so{
+
+#so {
     position: relative;
     top: 10px;
     text-align: right;
     justify-content: space-evenly;
     right: 10px;
-    width:30px;
+    width: 30px;
 }
-#lul{
+
+#lul {
     color: rgb(100, 173, 64);
     font-family: sans-serif;
     margin-top: 20px;
     justify-content: center;
     margin-left: 30px;
 }
-#st{
+
+#st {
     position: relative;
     top: 10px;
     display: flex;
     justify-content: end;
     margin-right: 15px;
 }
-#dtr{
+
+#dtr {
     display: flex;
     justify-content: end;
 }
-a{
+
+a {
     color: black;
     text-decoration: none;
 
 }
 
-main{
+main {
     margin-top: 3%;
 }
 
-button:hover{
+button:hover {
     font-size: 1.05rem;
 }
 
-.title{
+.title {
     margin-left: -5%;
     color: rgb(119, 199, 79);
     text-align: center;
@@ -97,11 +110,12 @@ button:hover{
     cursor: pointer;
 }
 
-.login{
-    background-color:rgb(119, 199, 79);
+.login {
+    background-color: rgb(119, 199, 79);
     width: 180px;
     height: 20px;
-    margin: 2%;
+    margin-top: -2%;
+    /* margin: 2%; */
     margin-left: 38%;
     padding: 7px;
     text-align: center;
@@ -111,12 +125,13 @@ button:hover{
     color: whitesmoke;
     border-color: rgb(119, 199, 79);
 }
-.sign{
-    background-color:rgb(119, 199, 79);
+
+.sign {
+    background-color: rgb(119, 199, 79);
     width: 250px;
     margin: 3%;
-    margin-left: 33%;
-    margin-right: 50%;
+    margin-left: 27%;
+    margin-right: 40%;
     padding: 7px;
     border-style: solid;
     border-radius: 75px;
@@ -133,6 +148,7 @@ input[type="text"] {
     padding: 7px;
     padding-left: 13px;
 }
+
 input[type="password"] {
     border-radius: 50px;
     border-style: solid;
@@ -141,7 +157,8 @@ input[type="password"] {
     padding: 7px;
     padding-left: 13px;
 }
-input[type="email"]{
+
+input[type="email"] {
     border-radius: 50px;
     border-style: solid;
     width: 60%;
@@ -149,21 +166,24 @@ input[type="email"]{
     padding: 7px;
     padding-left: 13px;
 }
-.sign:hover{
+
+.sign:hover {
     border-color: whitesmoke;
     cursor: pointer;
 }
-.login:hover{
+
+.login:hover {
     border-color: whitesmoke;
     cursor: pointer;
 }
-.header{
+
+.header {
     margin-left: 5%;
     margin-right: 5%;
     width: 1443px;
     height: 80px;
     color: whitesmoke;
-    border-style:solid;
+    border-style: solid;
     border-width: 1px;
     mask-border: 0.5;
     padding-left: 35px;
@@ -171,24 +191,26 @@ input[type="email"]{
     display: flex;
     flex-direction: row;
 }
-.first{
+
+.first {
     background-color: rgba(92, 89, 89, 0.6);
     margin-left: 25%;
     margin-right: 25%;
     border-style: solid;
-    border-width: 1px;  
+    border-width: 1px;
     border-radius: 12px;
     box-shadow: 0 6px 6px 7px rgba(77, 77, 77, 0.2), 0 4px 6px 0 rgba(115, 114, 114, 0.9);
     border-color: whitesmoke;
     padding-bottom: 20px;
 }
 
-.main{
-    
+.main {
+
     color: whitesmoke;
     text-align: center;
 }
-.reg{
+
+.reg {
     color: whitesmoke;
     margin: 5%;
     text-align: center;
