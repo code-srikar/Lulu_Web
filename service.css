@@ -1,115 +1,165 @@
-#mn{
-    position: absolute;
-    margin: auto;
-    size: 1000dp;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    background-color: rgba(202,237,247,0.993);
+#mn {
+  position: absolute;
+  margin: auto;
+  size: 1000dp;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  background-color: rgba(202, 237, 247, 0.993);
 }
-#imag{
-    position: relative;
-    top:12px;
-    height: 85px;
+
+#imag {
+  position: relative;
+  top: 12px;
+  height: 85px;
 }
-#bx2{
-    display: flex;
-    background-color: whitesmoke;
-    height: 9%;
-    width: auto;
+
+#bx2 {
+  display: flex;
+  background-color: whitesmoke;
+  height: 9%;
+  width: auto;
 }
-#dtr,#dtl{
-    position: relative;
-    display: inline-block;
-    width:49%;
-    height: auto;
+
+#dtr,
+#dtl {
+  position: relative;
+  display: inline-block;
+  width: 49%;
+  height: auto;
 }
-#flexitem{
-    position: relative;
-    top:5px;
-    width:75px;
-    text-align: end;
+
+#flexitem {
+  position: relative;
+  top: 5px;
+  width: 75px;
+  text-align: end;
 }
-#imp{
-    border-radius: 50%;
-    height: 28px;
-    top:2px;
-    margin-left: 15px;
-    margin-right: 10px;
+
+#imp {
+  border-radius: 50%;
+  height: 28px;
+  top: 2px;
+  margin-left: 15px;
+  margin-right: 10px;
 }
-#so{
-    position: relative;
-    top: 10px;
-    text-align: right;
-    justify-content: space-evenly;
-    right: 10px;
-    width:30px;
+
+#so {
+  position: relative;
+  top: 10px;
+  text-align: right;
+  justify-content: space-evenly;
+  right: 10px;
+  width: 30px;
 }
-#lul{
-    cursor: pointer;
-    color: rgb(100, 173, 64);
-    font-family: sans-serif;
-    margin-top: 20px;
-    justify-content: center;
-    margin-left: 30px;
+
+#lul {
+  cursor: pointer;
+  color: rgb(100, 173, 64);
+  font-family: sans-serif;
+  margin-top: 20px;
+  justify-content: center;
+  margin-left: 30px;
 }
-#st{
-    position: relative;
-    top: 10px;
-    display: flex;
-    justify-content: end;
-    margin-right: 15px;
+
+#st {
+  position: relative;
+  top: 10px;
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
 }
-#dtr{
-    display: flex;
-    top: 7px;
-    justify-content: end;
+
+#dtr {
+  display: flex;
+  top: 7px;
+  justify-content: end;
 }
-a{
-    color: black;
-    text-decoration: none;
+
+a {
+  color: black;
+  text-decoration: none;
 
 }
+
 .sidenav {
-    height: 655px;
-    width: 160px; 
-    position: relative; 
-    z-index: 1; 
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden; 
-    padding-top: 20px;
-    padding-left: 5px;
+  height: 655px;
+  width: 160px;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-left: 5px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
   }
+
   .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
+    font-size: 18px;
   }
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  .main {
-    margin-left: 160px; 
-    padding: 0px 10px;
-  }
-    @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-  #dd{
-    display: flex;
-    width: 100%;
-    height: 656px;
-    flex-direction: row;
-  }
-  #stmts{
-    padding: 6px 16px 6px 0px;
-    margin: 0px;
-    width: 29px;
-  }
+}
+
+#dd {
+  display: flex;
+  width: 100%;
+  height: 656px;
+  flex-direction: row;
+}
+
+#stmts {
+  padding: 6px 16px 6px 0px;
+  margin: 0px;
+  width: 29px;
+}
+
+#btn {
+  margin-left: 2.5%;
+  margin-top: 0.7%;
+  background-color: rgb(119, 199, 79);
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+#btn:hover {
+  background-color: rgb(13, 157, 13);
+}
+
+#flexitem1 {
+  font-size: 16px;
+  padding-left: 15%;
+  padding-right: 20%;
+}
+
+#flexitem1:hover {
+  font-size: 1.1rem;
+}
