@@ -1,11 +1,12 @@
-body{
+body {
     background-color: rgba(202, 237, 247, 0.993);
     /* font-family: sans-serif; */
 }
-#log{
-   position: relative;
-   font-family: serif;
-   background-color:  rgb(119, 199, 79);
+
+#log {
+    position: relative;
+    font-family: serif;
+    background-color: rgb(119, 199, 79);
     top: 2px;
     left: 9px;
     margin-left: 5px;
@@ -17,18 +18,19 @@ body{
     text-decoration: none;
 
 }
-.header{
+
+.header {
     width: 1443px;
     height: 80px;
     color: whitesmoke;
-    border-style:solid;
+    border-style: solid;
     border-width: 1px;
     mask-border: 0.5;
     padding-left: 5%;
     background-color: white;
 }
 
-.title{
+.title {
     margin-left: -5%;
     color: rgb(119, 199, 79);
     text-align: center;
@@ -36,11 +38,13 @@ body{
     height: 5px;
     cursor: pointer;
 }
-.form{
+
+.form {
     margin: 5%;
     text-align: center;
-    color:whitesmoke;
+    color: whitesmoke;
 }
+
 input[type="text"] {
     width: 50%;
     height: 20px;
@@ -55,31 +59,34 @@ input[type="password"] {
     margin-left: 25%;
 }
 
-.in1{
+.in1 {
     position: relative;
     margin: 5%;
-    top: 120px;
+    top: 50px;
     background-color: rgba(92, 89, 89, 0.6);
-    margin-left: 25%;
+    margin-left: 20%;
     margin-right: 25%;
     border-style: solid;
-    border-width: 1px;  
+    border-width: 1px;
     border-radius: 12px;
     box-shadow: 0 6px 6px 7px rgba(77, 77, 77, 0.2), 0 4px 6px 0 rgba(115, 114, 114, 0.9);
     border-color: whitesmoke;
     padding-bottom: 20px;
     z-index: 1;
 }
-button{
+
+button {
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
     margin-left: 45%;
 }
-button:hover{
+
+button:hover {
     background-color: burlywood;
     font-size: 1.05rem;
 }
+
 /* a:hover{
 
     font-size: 1.1rem; 
@@ -94,6 +101,7 @@ input[type="text"] {
     padding: 7px;
     padding-left: 13px;
 }
+
 input[type="password"] {
     border-radius: 50px;
     border-style: solid;
@@ -103,12 +111,12 @@ input[type="password"] {
     padding-left: 13px;
 }
 
-.login{
-    background-color:rgb(119, 199, 79);
+.login {
+    background-color: rgb(119, 199, 79);
     width: 180px;
     height: 20px;
     margin: 2%;
-    margin-left: 38%;
+    margin-left: 36.6%;
     padding: 7px;
     text-align: center;
     border-style: solid;
@@ -117,11 +125,13 @@ input[type="password"] {
     color: whitesmoke;
     border-color: rgb(119, 199, 79);
 }
-.login:hover{
+
+.login:hover {
     border-color: whitesmoke;
     cursor: pointer;
 }
-#mn{
+
+#mn {
     position: absolute;
     margin: auto;
     size: 1000dp;
@@ -131,55 +141,64 @@ input[type="password"] {
     left: 0;
     right: 0;
     justify-content: center;
-    background-color: rgba(202,237,247,0.993);
+    background-color: rgba(202, 237, 247, 0.993);
 }
-#imag{
+
+#imag {
     position: relative;
-    top:12px;
+    top: 12px;
     height: 85px;
 }
-#bx2{
+
+#bx2 {
     display: flex;
     background-color: whitesmoke;
     height: 9%;
     width: auto;
 }
-#dtr,#dtl{
+
+#dtr,
+#dtl {
     position: relative;
     display: inline-block;
-    width:49%;
+    width: 49%;
     height: auto;
 }
-#flexitem{
+
+#flexitem {
     position: relative;
-    top:10px;
-    width:75px;
+    top: 10px;
+    width: 75px;
     text-align: end;
 }
-#imp{
+
+#imp {
     border-radius: 50%;
     height: 28px;
-    top:2px;
+    top: 2px;
     margin-top: 10px;
     margin-left: 15px;
     margin-right: 10px;
 }
-#so{
+
+#so {
     position: relative;
     top: 10px;
     text-align: right;
     justify-content: space-evenly;
     right: 10px;
-    width:30px;
+    width: 30px;
 }
-#lul{
+
+#lul {
     color: rgb(100, 173, 64);
     font-family: sans-serif;
     margin-top: 20px;
     justify-content: center;
     margin-left: 30px;
 }
-#st{
+
+#st {
     position: relative;
     top: 7px;
     left: 10px;
@@ -187,17 +206,30 @@ input[type="password"] {
     justify-content: end;
     margin-right: 15px;
 }
-#dtr{
+
+#dtr {
     display: flex;
     justify-content: end;
 }
-a{
+
+a {
     color: blue;
     text-decoration: none;
 
 }
 
-#forgot{
+#forgot {
+    color: rgb(52, 50, 50);
     padding-left: 25.5%;
     cursor: pointer;
+}
+
+#newac {
+    margin-left: 37%;
+    color: rgb(52, 50, 50);
+}
+
+#Welcome {
+    color: rgb(100, 173, 64);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
