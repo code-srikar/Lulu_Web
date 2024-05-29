@@ -1,217 +1,86 @@
 body {
-    background-color: rgba(202, 237, 247, 0.993);
-}
-
-.first {
-    z-index: 1;
-    position: relative;
-    margin-top: 8%;
+    font-family: 'Arial', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
 }
 
 #mn {
-    position: absolute;
-    margin: auto;
-    size: 1000dp;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    background-color: rgba(202, 237, 247, 0.993);
-}
-
-#imag {
-    position: relative;
-    top: 12px;
-    height: 85px;
+    background: rgb(119, 199, 79);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
 #bx2 {
     display: flex;
-    background-color: whitesmoke;
-    height: 9%;
-    width: auto;
-}
-
-#dtr,
-#dtl {
-    position: relative;
-    display: inline-block;
-    width: 49%;
-    height: auto;
-}
-
-#flexitem {
-    position: relative;
-    top: 5px;
-    width: 75px;
-    text-align: end;
-}
-
-#imp {
-    border-radius: 50%;
-    height: 28px;
-    top: 2px;
-    margin-left: 15px;
-    margin-right: 10px;
-}
-
-#so {
-    position: relative;
-    top: 10px;
-    text-align: right;
-    justify-content: space-evenly;
-    right: 10px;
-    width: 30px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 #lul {
-    color: rgb(100, 173, 64);
-    font-family: sans-serif;
-    margin-top: 20px;
-    justify-content: center;
-    margin-left: 30px;
-}
-
-#st {
-    position: relative;
-    top: 10px;
-    display: flex;
-    justify-content: end;
-    margin-right: 15px;
-}
-
-#dtr {
-    display: flex;
-    justify-content: end;
-}
-
-a {
-    color: black;
-    text-decoration: none;
-
-}
-
-main {
-    margin-top: 3%;
-}
-
-button:hover {
-    font-size: 1.05rem;
-}
-
-.title {
-    margin-left: -5%;
-    color: rgb(119, 199, 79);
-    text-align: center;
-    width: 280px;
-    height: 5px;
-    cursor: pointer;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .login {
-    background-color: rgb(119, 199, 79);
-    width: 180px;
-    height: 20px;
-    margin-top: -2%;
-    /* margin: 2%; */
-    margin-left: 38%;
-    padding: 7px;
-    text-align: center;
-    border-style: solid;
-    border-radius: 75px;
-    color: rgb(119, 199, 79);
-    color: whitesmoke;
-    border-color: rgb(119, 199, 79);
-}
-
-.sign {
-    background-color: rgb(119, 199, 79);
-    width: 250px;
-    margin: 3%;
-    margin-left: 27%;
-    margin-right: 40%;
-    padding: 7px;
-    border-style: solid;
-    border-radius: 75px;
-    color: rgb(119, 199, 79);
-    color: whitesmoke;
-    border-color: rgb(119, 199, 79);
-}
-
-input[type="text"] {
-    border-radius: 50px;
-    border-style: solid;
-    width: 60%;
-    height: 20px;
-    padding: 7px;
-    padding-left: 13px;
-}
-
-input[type="password"] {
-    border-radius: 50px;
-    border-style: solid;
-    width: 60%;
-    height: 20px;
-    padding: 7px;
-    padding-left: 13px;
-}
-
-input[type="email"] {
-    border-radius: 50px;
-    border-style: solid;
-    width: 60%;
-    height: 20px;
-    padding: 7px;
-    padding-left: 13px;
-}
-
-.sign:hover {
-    border-color: whitesmoke;
     cursor: pointer;
+    background: #fff;
+    color: rgb(119, 199, 79);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .login:hover {
-    border-color: whitesmoke;
-    cursor: pointer;
+    background: #e0e0e0;
 }
 
-.header {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 1443px;
-    height: 80px;
-    color: whitesmoke;
-    border-style: solid;
-    border-width: 1px;
-    mask-border: 0.5;
-    padding-left: 35px;
-    background-color: white;
+main {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
 }
 
 .first {
-    background-color: rgba(92, 89, 89, 0.6);
-    margin-left: 25%;
-    margin-right: 25%;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 12px;
-    box-shadow: 0 6px 6px 7px rgba(77, 77, 77, 0.2), 0 4px 6px 0 rgba(115, 114, 114, 0.9);
-    border-color: whitesmoke;
-    padding-bottom: 20px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
 }
 
-.main {
-
-    color: whitesmoke;
+.reg h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.reg {
-    color: whitesmoke;
-    margin: 5%;
+.main input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.sign {
     text-align: center;
+    background: rgb(119, 199, 79);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.sign:hover {
+    background: rgb(119, 199, 79);
 }

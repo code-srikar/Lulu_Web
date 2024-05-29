@@ -17,146 +17,88 @@
             <div id="dtl">
                 <h2 id="lul">LULU Bank</h2>
             </div>
-            <div id="dtr">
-                <div id="st">
-                    <!-- <div id="flexitem"><a href="proj.html">Home</a></div>
-                        <div id="flexitem" style="text-align: center;"><a href="about.html" >About</a></div>
-                        <div id="flexitem"><a href="contactus.html" style="text-align: center;margin-right: 10px;">Download </a></div>
-                        <div id="flexitem"><a href="contactus.html">Contact Us </a></div> -->
-                    <div id="dtr">
-                        <div id="st">
-                            <!-- <div class="login" id="reg" name="reg">SignUp</a></div> -->
-                        </div>
-
-                    </div>
-                </div>
-                <p id="Welcome"><b>Welcome to LULU Bank.Have a great experience!</b></p>
-
-                <!-- <div id="so">
-                    <a href="detail.html">
-                        <img src="prof.png" alt="profile pic" id="imp">
-                    </a>
-                    
-                </div> -->
-            </div>
         </div>
     </div>
     <div class="main">
         <div class="in1">
             <h1 class="form">LOGIN</h1>
-            <input type="text" placeholder="Enter your Email" name="email" id="email"><br><br>
-            <input type="password" placeholder="Enter your Password" name="pass" id="pass"><br><br>
-            <a id="forgot">Forgot Password?</a><br>
+            <input type="text" placeholder="Enter your Email" name="email" id="email"><br>
+            <input type="password" placeholder="Enter your Password" name="pass" id="pass"><br>
+            <a id="forgot">Forgot Password?</a>
             <div class="login" id="login" name="login">Login</div>
             <p id="newac">Don't have an account <span><u><a href="index.html">Signup</a></u></span></p>
-            <!--<button name="login" id="login">Login</button>
-            <button name="forgot" id="forgot">Forgot</button>-->
-            <!--<p>Create a new customer?<a href="byte2.html">Click Here</a></p>-->
         </div>
     </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
+            authDomain: "lulu-bank-90869.firebaseapp.com",
+            projectId: "lulu-bank-90869",
+            storageBucket: "lulu-bank-90869.appspot.com",
+            messagingSenderId: "695316046662",
+            appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        document.getElementById("login").addEventListener("click", function () {
+            var mail = document.getElementById("email").value;
+            var password = document.getElementById("pass").value;
+
+            if (password != "" && mail != "") {
+                password = window.btoa(password);
+                var docRef = doc(db, "User", mail);
+
+                getDoc(docRef).then((docSnap) => {
+                    if (docSnap.exists()) {
+                        if (docSnap.data().bFlag == 1) {
+                            signInWithEmailAndPassword(auth, mail, password)
+                                .then((userCredential) => {
+                                    const user = userCredential.user;
+                                    if (user.emailVerified) {
+                                        localStorage.setItem('email', mail);
+                                        window.location.reload();
+                                        window.location.replace('proj.html');
+                                    } else {
+                                        toastr.warning('Please verify your email before proceeding further...', 'Not Verified');
+                                    }
+                                })
+                                .catch((error) => {
+                                    const errorMessage = error.message;
+                                    if (errorMessage == "Firebase: Error (auth/invalid-credential).") {
+                                        toastr.error('Please try again with correct details.', 'Invalid Credentials');
+                                    }
+                                });
+                        } else {
+                            alert("Account is currently blocked\nPlease contact the Administrator..");
+                        }
+                    }
+                });
+            } else {
+                toastr.warning('Please fill all the fields');
+            }
+        });
+
+        document.getElementById("forgot").addEventListener("click", function () {
+            sendPasswordResetEmail(auth, document.getElementById("email").value)
+                .then(() => {
+                    toastr.success('Please check your inbox for a reset link!', 'Sent');
+                }).catch((error) => {
+                    if (document.getElementById("email").value == "") {
+                        toastr.warning('Please enter your email address..');
+                    } else {
+                        toastr.error(error.message);
+                    }
+                });
+        });
+    </script>
 </body>
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyC1BIQDt4MVn2h1Wq0Xxt09wkZe66K7Lik",
-        authDomain: "lulu-bank-90869.firebaseapp.com",
-        projectId: "lulu-bank-90869",
-        storageBucket: "lulu-bank-90869.appspot.com",
-        messagingSenderId: "695316046662",
-        appId: "1:695316046662:web:9fa4c6c839c2f2dbd5fb47"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const db = getFirestore();
-
-    // console.log(app);
-
-    // document.getElementById("reg").addEventListener("click", function () {
-    //     window.location.replace('index.html');
-    // });
-
-    document.getElementById("login").addEventListener("click", function () {
-        var mail = document.getElementById("email").value;
-        var password = document.getElementById("pass").value;
-
-        var docRef = doc(db, "User", mail);
-        const docSnap = getDoc(docRef);
-
-        if (password != "" && mail != "") {
-
-            password = window.btoa(password);
-            console.log(password);
-
-            const docSnsp1 = getDoc(docRef).then((docSnap) => {
-                if (docSnap.exists()) {
-
-                    if (docSnap.data().bFlag == 1) {
-
-                        signInWithEmailAndPassword(auth, mail, password)
-                            .then((userCredential) => {
-                                const user = userCredential.user;
-                                console.log(user);
-                                var status = user.emailVerified;
-                                console.log("Is verified : " + status);
-                                if (status == true) {
-                                    localStorage.setItem('email', mail);
-                                    window.location.reload();
-                                    window.location.replace('proj.html');
-                                }
-                                else {
-                                    //alert("Your email is not verified!\nPlease verify your email to proceed further...");
-                                    toastr.warning('Please verify your email before proceeding further...', 'Not Verified');
-                                    // toastr.options.progressBar = true;
-                                    // setTimeout(function() {localStorage.clear(); window.location.reload()}, 6500);
-                                    // window.location.reload();
-                                }
-                            })
-                            .catch((error) => {
-                                const errorCode = error.code;
-                                const errorMessage = error.message;
-                                console.log(errorMessage);
-                                if (errorMessage == "Firebase: Error (auth/invalid-credential).") {
-                                    // alert("Invalid credentials!!\nPlease try again with correct details.");
-                                    toastr.error('Please try again with correct details.', 'Invalid Credentials');
-                                }
-                            });
-                    }
-                    else {
-                        alert("Account is currently blocked\nPlease contact the Administrator..");
-                    }
-                }
-            })
-        }
-        else {
-            // alert('Please fill all the fields');
-            toastr.warning('Please fill all the fields');
-        }
-    });
-
-    document.getElementById("forgot").addEventListener("click", function () {
-        sendPasswordResetEmail(auth, document.getElementById("email").value)
-            .then(() => {
-                // alert("Please check your inbox for a reset link!");
-                toastr.success('Please check your inbox for a reset link!', 'Sent');
-            }).catch((error) => {
-                if (document.getElementById("email").value == "") {
-                    // alert("Please enter your email address..")
-                    toastr.warning('Please enter your email address..');
-                } else {
-                    // alert(error.message);
-                    toastr.error(error.message);
-                }
-            });
-    });
-</script>
 
 </html>
