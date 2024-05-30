@@ -22,7 +22,7 @@
                         <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
                                 onclick="window.location.replace('about.html')">About</a></div>
                         <div id="flexitem" style="text-align: center;"><a style="cursor: pointer;"
-                                onclick="window.location.replace('contactus.html')">Contact Us </a></div>
+                                onclick="window.location.replace('contactus.html')">ContactUs</a></div>
                     </div>
                     <div id="so">
                         <a style="cursor: pointer;" onclick="window.location.replace('detail.html')">
@@ -43,13 +43,12 @@
             <h2>Account Number : <span id="accno"></span></h2>
             <h2>Mobile Number : <span id="mbno"></span></h2>
             <div>
-                <h2 id="signout" style="width: fit-content;">Sign Out</h2>
+                <button id="signout">Sign Out</button>
             </div>
         </div>
     </div>
 </body>
 <script type="module">
-
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";

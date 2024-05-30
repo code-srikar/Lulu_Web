@@ -34,11 +34,29 @@
             </div>
         </div>
         <div id="con">
-            <p id="title">Systematic Investment Plan📈</p>
+            <h1>SIP Calculator</h1>
+
+            <label for="principal">Principal Amount:</label>
+            <input type="number" id="principal" value="10000">
+
+            <label for="monthlyInvestment">Monthly Investment Amount:</label>
+            <input type="number" id="monthlyInvestment" value="1000">
+
+            <label for="annualInterestRate">Annual Interest Rate (%):</label>
+            <input type="number" id="annualInterestRate" value="10">
+
+            <label for="investmentYears">Number of Years for Investment:</label>
+            <input type="number" id="investmentYears" value="5">
+
+            <button class="cal" onclick="calculateSIP()">Calculate</button>
+
+            <div id="result"></div>
+            <!-- <p id="title">Systematic Investment Plan📈</p>
             <input type="number" id="amount" class="inp" placeholder="Enter amount for SIP">
-            <!-- <input type="text" id="inp" placeholder="sd"> -->
+             <input type="text" id="inp" placeholder="sd"> 
             <input type="number" class="inp" id="tenure" min="1" step="1" placeholder="Enter Tenure (in months)">
-            <input type="number" id="Returns" class="inp" placeholder="Expected Returns">
+            <input type="number" id="Returns" class="inp" placeholder="Expected Returns"> -->
+
             <!-- <div id="sub" name="sub">sip</div> -->
             <!-- <fieldset class="range__field">
                 <input class="range" type="range" min="0" max="10">
@@ -69,7 +87,6 @@
                    <text class="range__point" x="100%" y="14" text-anchor="end">10</text>
                 </svg>
              </fieldset> -->
-            <div id="sub" name="sub">Start SIP</div>
 
         </div>
     </div>
@@ -95,56 +112,71 @@
 
     var docRef = doc(db, "User", localStorage.getItem('email'));
     const docSnap = await getDoc(docRef);
+    let principalAmount = parseFloat(document.getElementById('principal').value);
+    let monthlyInvestmentAmount = parseFloat(document.getElementById('monthlyInvestment').value);
+    let annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+    let investmentYears = parseFloat(document.getElementById('investmentYears').value);
 
-    document.getElementById('sub').addEventListener("click", () => {
-        var a = document.getElementById('amount').value;
-        var a1 = parseInt(a);
-        var t = document.getElementById('tenure').value;
-        var t1 = parseInt(t);
+    document.getElementsByClassName('cal').addEventListener("click", () => {
+        // var a = document.getElementById('amount').value;
+        // var a1 = parseInt(a);
+        // var t = document.getElementById('tenure').value;
+        // var t1 = parseInt(t);
 
-        if (a == "" || t == "") {
-            alert("Please fill the fields");
+        // if (a == "" || t == "") {
+        //     alert("Please fill the fields");
+        // }
+        // else {
+        let p = docSnap.data().amount;
+        let q = parseInt(p);
+
+        if (q < principalAmount) {
+            alert("Insufficient Balance!");
         }
         else {
-            let p = docSnap.data().amount;
-            let q = parseInt(p);
+            q -= principalAmount;
 
-            if (q < a1) {
-                alert("Insufficient Balance!");
-            }
-            else {
-                q -= a1;
+            updateDoc(docRef, { amount: q });
+            let data;
+            let b = principalAmount;
+            let accno = "SIP";
+            let code = 90869;
+            let date = new Date();
+            let flag = 1;
+            data = { b, accno, code, date, flag };
 
-                updateDoc(docRef, { amount: q });
-                let data;
-                let b = a1;
-                let accno = "SIP";
-                let code = 90869;
-                let date = new Date();
-                let flag = 1;
-                data = { b, accno, code, date, flag };
+            updateDoc(docRef, { transData: data });
 
-                updateDoc(docRef, { transData: data });
+            updateDoc(docRef, {
+                data: arrayUnion(data)
+            });
 
-                updateDoc(docRef, {
-                    data: arrayUnion(data)
-                });
-
-                console.log("Success");
-                console.log(a1)
-            }
+            console.log("Success");
+            console.log(principalAmount)
+            // }
         }
     });
 
-
+    function sipCalculator(principal, monthlyInvestment, annualInterestRate, years) {
+        let monthlyInterestRate = annualInterestRate / 12 / 100;
+        let totalInvested = principal;
+        for (let i = 0; i < years * 12; i++) {
+            totalInvested += monthlyInvestment;
+            totalInvested *= (1 + monthlyInterestRate);
+        }
+        return totalInvested;
+    }
+    function calculateSIP() {
+        let principalAmount = parseFloat(document.getElementById('principal').value);
+        let monthlyInvestmentAmount = parseFloat(document.getElementById('monthlyInvestment').value);
+        let annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+        let investmentYears = parseFloat(document.getElementById('investmentYears').value);
+        let finalAmount = sipCalculator(principalAmount, monthlyInvestmentAmount, annualInterestRate, investmentYears);
+        document.getElementById('result').innerHTML = "Final amount after " + investmentYears + " years of SIP investment: $" + finalAmount.toFixed(2);
+    }
     document.getElementById('btn').addEventListener("click", () => {
         window.location.replace('investment.html');
     });
-    const amo = document.getElementById('amount').value;
-    const mon = document.getElementById('tenure').value;
-    const intrest = (amo * mon * 10);
-    console.log(intrest)
-    document.getElementById('Returns').textContent = intrest;
 </script>
 
 </html>
