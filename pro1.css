@@ -1,187 +1,169 @@
-#mn {
-    position: absolute;
-    padding: auto;
-    size: 1000dp;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
+/* pro1.css */
+
+/* Reset some default browser styles */
+body,
+h2,
+h3,
+a,
+img,
+div,
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 20px 0 0 20px;
+}
+
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    height: 100vh;
+    display: flex;
     justify-content: center;
-    background-color: rgba(202, 237, 247, 0.993);
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-#imag {
-    position: relative;
-    top: 12px;
-    height: 85px;
-
+/* Container to fill the viewport height */
+#mn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Navigation bar styles */
 #bx2 {
+    background-color: rgb(119, 199, 79);
+    color: white;
     display: flex;
-    background-color: whitesmoke;
-    height: 9%;
-    width: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#dtr,
 #dtl {
-    position: relative;
-    display: inline-block;
-    width: 49%;
-    height: auto;
-    /* background-color: whitesmoke; */
-}
-
-ul {
     display: flex;
-    list-style-type: none;
-    padding: 3px;
-    justify-items: right;
-}
-
-#so {
-    position: relative;
-    top: 10px;
-    text-align: right;
-    justify-content: space-evenly;
-    right: 10px;
-    width: 30px;
+    align-items: center;
 }
 
 #lul {
-    cursor: pointer;
-    color: rgb(100, 173, 64);
-    font-family: sans-serif;
-    margin-top: 20px;
-    justify-content: center;
-    margin-left: 30px;
-}
-
-#st {
-    position: relative;
-    top: 10px;
-    display: flex;
-    justify-content: end;
-    margin-right: 15px;
-}
-
-#flexitem {
-    position: relative;
-    top: 5px;
-    width: 75px;
-    text-align: end;
-    padding-left: 10px;
-    /* justify-content: end; */
-}
-
-li {
-    padding: 5px;
+    font-size: 24px;
 }
 
 #dtr {
-    top: 7px;
     display: flex;
-    justify-content: end;
-
-}
-
-#imp {
-    border-radius: 50%;
-    height: 28px;
-    top: 2px;
-    margin-left: 15px;
-    margin-right: 10px;
-}
-
-#nam {
-    margin-left: 13px;
-    margin-top: 10px;
-    font-size: 22px;
-}
-
-#it3 {
-    /*margin-top: 60px;*/
-    grid-area: tl;
-    border: 15px;
-}
-
-#it4 {
-    /*margin-top: 60px;*/
-    grid-area: tr;
-    border: 15px;
-}
-
-#it5 {
-    grid-area: bl;
-    border: 15px;
-}
-
-#it6 {
-    grid-area: br;
-    border: 15px;
-}
-
-#itm {
-    display: grid;
-    position: absolute;
-    height: 77vh;
-    width: 75%;
-    left: 10%;
     align-items: center;
-    grid-template-areas:
-        'tl    tr'
-        'bl   br';
-    padding: 7px;
-    justify-content: space-around;
-
 }
 
-#cm {
-    font-size: larger;
-    padding: auto;
-    position: relative;
-    margin: 39% auto;
-
+#st {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
 }
 
-#bx {
-    position: relative;
-    padding: 35px;
-    height: 130px;
+#flexitem {
+    flex: 1;
+}
+
+#flexitem a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
     text-align: center;
+}
+
+#flexitem a:hover {
+    color: #ffdd57;
+}
+
+#so {
+    display: flex;
     align-items: center;
-    width: 130px;
-    opacity: 0.8px;
-    border-radius: 5px;
-    background-color: rgb(119, 199, 79);
+}
+
+#so a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+#so a img:hover {
+    transform: scale(1.1);
+}
+
+/* Container styles */
+#itm {
+    margin: 35px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Grid with two columns */
+    gap: 25px;
+    /* Adjust the gap between the cards */
+    justify-content: center;
+    /* Center the cards horizontally */
+    align-items: center;
+    /* Center the cards vertically */
+    place-items: center;
+    /* Center both horizontally and vertically */
+}
+
+/* Card styles */
+#bx {
+    background: rgb(119, 199, 79);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px;
+    /* Adjusted card width */
+    height: 250px;
+    /* Adjusted card height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #bx:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition-timing-function: all;
-    transition: 0.7s;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
+#imag {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Additional styles */
 a {
-    color: black;
+    cursor: pointer;
+}
+
+u {
     text-decoration: none;
-
+    border-bottom: 2px solid #ffdd57;
+    transition: border-color 0.3s;
 }
 
-#tt {
-    position: relative;
-    width: max-content;
-    margin-left: 2%;
-}
-
-#flexitem1 {
-    font-size: 16px;
-    padding-left: 3px;
-    padding-right: 4px;
-}
-
-#flexitem1:hover {
-    font-size: 1.1rem;
+u:hover {
+    border-color: rgb(119, 199, 79);
 }

@@ -12,7 +12,8 @@
     <div id="mn">
         <div id="bx2">
             <div id="dtl">
-                <button id="btn"><i class="fa fa-close"></i> Close</button>
+                <!-- Using back arrow icon -->
+                <button id="btn"><i class="fa fa-arrow-left"></i> Back</button>
             </div>
             <div id="dtr">
                 <div id="st">
@@ -36,14 +37,12 @@
                     <img src="banktransfer.png" alt="" id="img">
                     <h3>Transfer</h3>
                 </div>
-                </a>
             </div>
             <div id="ite2" style="cursor: pointer;">
                 <div id="cbx">
                     <img src="depo.png" alt="" id="img">
                     <h3>Deposit</h3>
                 </div>
-                </a>
             </div>
         </div>
     </div>
@@ -53,17 +52,16 @@
 
     document.getElementById('ite1').addEventListener("click", () => {
         window.location.replace('transfer.html');
-    })
+    });
 
     document.getElementById('ite2').addEventListener("click", () => {
         window.location.replace('dep.html');
-    })
-
-    // document.getElementById('lul').textContent = "<a href="#" class="previous">&laquo; Previous</a>"
+    });
 
     document.getElementById('btn').addEventListener("click", () => {
         window.location.replace('proj.html');
-    });
+    })
+
 </script>
 
 </html>
