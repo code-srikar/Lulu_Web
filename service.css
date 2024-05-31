@@ -275,3 +275,7 @@ u {
 u:hover {
   border-color: rgb(119, 199, 79);
 }
+
+.close {
+  text-align: right;
+}
