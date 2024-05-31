@@ -21,7 +21,6 @@
                                 onclick="window.location.replace('proj.html')"><u>Home</u></a></div>
                         <div id="flexitem" style="text-align: center;"><a id="flexitem1" style="cursor: pointer;"
                                 onclick="window.location.replace('about.html')"><u>About</u></a></div>
-
                         <div id="flexitem" style="text-align: center;"><a id="flexitem1" style="cursor: pointer;"
                                 onclick="window.location.replace('contactus.html')"><u>ContactUs</u></a></div>
                     </div>
@@ -37,62 +36,24 @@
             <h1>SIP Calculator</h1>
 
             <label for="principal">Principal Amount:</label>
-            <input type="number" id="principal">
+            <input type="number" id="principal" placeholder="Enter Principal Amount">
 
             <label for="monthlyInvestment">Monthly Investment Amount:</label>
-            <input type="number" id="monthlyInvestment" value="1000">
+            <input type="number" id="monthlyInvestment" placeholder="Enter Monthly Amount">
 
             <label for="annualInterestRate">Annual Interest Rate (%):</label>
             <input type="number" id="annualInterestRate" value="10">
 
             <label for="investmentYears">Number of Years for Investment:</label>
-            <input type="number" id="investmentYears" value="5">
+            <input type="number" id="investmentYears" placeholder="Enter Number of Years">
 
             <button id="cal">Calculate</button>
 
             <div id="result"></div>
-            <!-- <p id="title">Systematic Investment Plan📈</p>
-            <input type="number" id="amount" class="inp" placeholder="Enter amount for SIP">
-             <input type="text" id="inp" placeholder="sd"> 
-            <input type="number" class="inp" id="tenure" min="1" step="1" placeholder="Enter Tenure (in months)">
-            <input type="number" id="Returns" class="inp" placeholder="Expected Returns"> -->
-
-            <!-- <div id="sub" name="sub">sip</div> -->
-            <!-- <fieldset class="range__field">
-                <input class="range" type="range" min="0" max="10">
-                <svg role="presentation" width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
-                   <rect class="range__tick" x="0%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="10%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="20%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="30%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="40%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="50%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="60%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="70%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="80%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="90%" y="3" width="1" height="10"></rect>
-                   <rect class="range__tick" x="100%" y="3" width="1" height="10"></rect>
-                </svg>
-                <svg role="presentation" width="100%" height="14" xmlns="http://www.w3.org/2000/svg">
-                   <text class="range__point" x="0%" y="14" text-anchor="start">0</text>
-                   <text class="range__point" x="10%" y="14" text-anchor="middle">1</text>
-                   <text class="range__point" x="20%" y="14" text-anchor="middle">2</text>
-                   <text class="range__point" x="30%" y="14" text-anchor="middle">3</text>
-                   <text class="range__point" x="40%" y="14" text-anchor="middle">4</text>
-                   <text class="range__point" x="50%" y="14" text-anchor="middle">5</text>
-                   <text class="range__point" x="60%" y="14" text-anchor="middle">6</text>
-                   <text class="range__point" x="70%" y="14" text-anchor="middle">7</text>
-                   <text class="range__point" x="80%" y="14" text-anchor="middle">8</text>
-                   <text class="range__point" x="90%" y="14" text-anchor="middle">9</text>
-                   <text class="range__point" x="100%" y="14" text-anchor="end">10</text>
-                </svg>
-             </fieldset> -->
-
         </div>
     </div>
 </body>
 <script type="module">
-
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, getDoc, updateDoc, setDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -109,55 +70,65 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const db = getFirestore();
+
     document.getElementById('btn').addEventListener("click", () => {
         window.location.replace('investment.html');
     });
 
-    var docRef = doc(db, "User", localStorage.getItem('email'));
-    const docSnap = await getDoc(docRef);
-    let pa = document.getElementById('principal').value;
-    let mia = document.getElementById('monthlyInvestment').value;
-    let air = document.getElementById('annualInterestRate').value;
-    let iy = document.getElementById('investmentYears').value;
-
-    document.getElementById('cal').addEventListener("click", () => {
-        // var a = document.getElementById('amount').value;
-        // var a1 = parseInt(a);
-        // var t = document.getElementById('tenure').value;
-        // var t1 = parseInt(t);
-
-        // if (a == "" || t == "") {
-        //     alert("Please fill the fields");
-        // }
-        // else {
-        let p = docSnap.data().amount;
-        let q = parseInt(p);
-
-        if (q < pa) {
-            alert("Insufficient Balance!");
+    async function handleCalculateClick() {
+        const email = localStorage.getItem('email');
+        if (!email) {
+            alert('User not logged in');
+            return;
         }
-        else {
-            q -= pa;
 
-            updateDoc(docRef, { amount: q });
-            let data;
-            let b = pa;
-            let accno = "SIP";
-            let code = 90869;
-            let date = new Date();
-            let flag = 1;
-            data = { b, accno, code, date, flag };
+        const docRef = doc(db, "User", email);
+        const docSnap = await getDoc(docRef);
 
-            updateDoc(docRef, { transData: data });
+        if (!docSnap.exists()) {
+            alert("No such user data!");
+            return;
+        }
 
-            updateDoc(docRef, {
-                data: arrayUnion(data)
+        const userData = docSnap.data();
+        const availableBalance = userData.amount;
+        const principalAmount = parseFloat(document.getElementById('principal').value);
+        const monthlyInvestmentAmount = parseFloat(document.getElementById('monthlyInvestment').value);
+        const annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+        const investmentYears = parseFloat(document.getElementById('investmentYears').value);
+
+        if (availableBalance < principalAmount) {
+            alert("Insufficient Balance!");
+            return;
+        }
+
+        const finalAmount = sipCalculator(principalAmount, monthlyInvestmentAmount, annualInterestRate, investmentYears);
+        document.getElementById('result').innerHTML = "Final amount after " + investmentYears + " years of SIP investment: $" + finalAmount.toFixed(2);
+
+        const newBalance = availableBalance - principalAmount;
+
+        try {
+            await updateDoc(docRef, { amount: newBalance });
+
+            const transactionData = {
+                b: principalAmount,
+                accno: "SIP",
+                code: 90869,
+                flag: 1,
+                date: new Date() // Using ISO string instead of serverTimestamp
+            };
+
+            await updateDoc(docRef, { transData: transactionData });
+
+            await updateDoc(docRef, {
+                data: arrayUnion(transactionData)
             });
 
             console.log("Success");
-            // }
+        } catch (error) {
+            console.error("Error updating document: ", error);
         }
-    });
+    }
 
     function sipCalculator(principal, monthlyInvestment, annualInterestRate, years) {
         let monthlyInterestRate = annualInterestRate / 12 / 100;
@@ -168,14 +139,8 @@
         }
         return totalInvested;
     }
-    function calculateSIP() {
-        let principalAmount = parseFloat(document.getElementById('principal').value);
-        let monthlyInvestmentAmount = parseFloat(document.getElementById('monthlyInvestment').value);
-        let annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
-        let investmentYears = parseFloat(document.getElementById('investmentYears').value);
-        let finalAmount = sipCalculator(principalAmount, monthlyInvestmentAmount, annualInterestRate, investmentYears);
-        document.getElementById('result').innerHTML = "Final amount after " + investmentYears + " years of SIP investment: $" + finalAmount.toFixed(2);
-    }
+
+    document.getElementById('cal').addEventListener("click", handleCalculateClick);
 </script>
 
 </html>
