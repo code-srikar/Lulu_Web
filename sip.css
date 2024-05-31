@@ -42,7 +42,7 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
-.cal {
+#cal {
   width: 100%;
   padding: 12px 0;
   background-color: #4CAF50;

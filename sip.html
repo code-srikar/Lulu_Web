@@ -37,7 +37,7 @@
             <h1>SIP Calculator</h1>
 
             <label for="principal">Principal Amount:</label>
-            <input type="number" id="principal" value="10000">
+            <input type="number" id="principal">
 
             <label for="monthlyInvestment">Monthly Investment Amount:</label>
             <input type="number" id="monthlyInvestment" value="1000">
@@ -48,7 +48,7 @@
             <label for="investmentYears">Number of Years for Investment:</label>
             <input type="number" id="investmentYears" value="5">
 
-            <button class="cal" onclick="calculateSIP()">Calculate</button>
+            <button id="cal">Calculate</button>
 
             <div id="result"></div>
             <!-- <p id="title">Systematic Investment Plan📈</p>
@@ -109,15 +109,18 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const db = getFirestore();
+    document.getElementById('btn').addEventListener("click", () => {
+        window.location.replace('investment.html');
+    });
 
     var docRef = doc(db, "User", localStorage.getItem('email'));
     const docSnap = await getDoc(docRef);
-    let principalAmount = parseFloat(document.getElementById('principal').value);
-    let monthlyInvestmentAmount = parseFloat(document.getElementById('monthlyInvestment').value);
-    let annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
-    let investmentYears = parseFloat(document.getElementById('investmentYears').value);
+    let pa = document.getElementById('principal').value;
+    let mia = document.getElementById('monthlyInvestment').value;
+    let air = document.getElementById('annualInterestRate').value;
+    let iy = document.getElementById('investmentYears').value;
 
-    document.getElementsByClassName('cal').addEventListener("click", () => {
+    document.getElementById('cal').addEventListener("click", () => {
         // var a = document.getElementById('amount').value;
         // var a1 = parseInt(a);
         // var t = document.getElementById('tenure').value;
@@ -130,15 +133,15 @@
         let p = docSnap.data().amount;
         let q = parseInt(p);
 
-        if (q < principalAmount) {
+        if (q < pa) {
             alert("Insufficient Balance!");
         }
         else {
-            q -= principalAmount;
+            q -= pa;
 
             updateDoc(docRef, { amount: q });
             let data;
-            let b = principalAmount;
+            let b = pa;
             let accno = "SIP";
             let code = 90869;
             let date = new Date();
@@ -152,7 +155,6 @@
             });
 
             console.log("Success");
-            console.log(principalAmount)
             // }
         }
     });
@@ -174,9 +176,6 @@
         let finalAmount = sipCalculator(principalAmount, monthlyInvestmentAmount, annualInterestRate, investmentYears);
         document.getElementById('result').innerHTML = "Final amount after " + investmentYears + " years of SIP investment: $" + finalAmount.toFixed(2);
     }
-    document.getElementById('btn').addEventListener("click", () => {
-        window.location.replace('investment.html');
-    });
 </script>
 
 </html>
