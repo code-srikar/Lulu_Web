@@ -1,165 +1,277 @@
-#mn {
-  position: absolute;
-  margin: auto;
-  size: 1000dp;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  justify-content: center;
-  background-color: rgba(202, 237, 247, 0.993);
+/* Reset some default browser styles */
+body,
+h1,
+form,
+div,
+label,
+input,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
-#imag {
-  position: relative;
-  top: 12px;
-  height: 85px;
-}
-
-#bx2 {
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  color: #333;
+  height: 100vh;
   display: flex;
-  background-color: whitesmoke;
-  height: 9%;
-  width: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-#dtr,
+/* Container styles */
+.container {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Header styles */
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Button styles */
+#btn {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(119, 199, 79);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Additional styles for better consistency */
+a {
+  cursor: pointer;
+}
+
+u {
+  text-decoration: none;
+  border-bottom: 2px solid #ffdd57;
+  transition: border-color 0.3s;
+}
+
+u:hover {
+  border-color: rgb(119, 199, 79);
+}
+
+/* pro1.css */
+
+/* Reset some default browser styles */
+body,
+h2,
+h3,
+a,
+img,
+div,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 20px 0 0 20px;
+}
+
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container to fill the viewport height */
+#mn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation bar styles */
+#bx2 {
+  background-color: rgb(119, 199, 79);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 #dtl {
-  position: relative;
-  display: inline-block;
-  width: 49%;
-  height: auto;
-}
-
-#flexitem {
-  position: relative;
-  top: 5px;
-  width: 75px;
-  text-align: end;
-}
-
-#imp {
-  border-radius: 50%;
-  height: 28px;
-  top: 2px;
-  margin-left: 15px;
-  margin-right: 10px;
-}
-
-#so {
-  position: relative;
-  top: 10px;
-  text-align: right;
-  justify-content: space-evenly;
-  right: 10px;
-  width: 30px;
+  display: flex;
+  align-items: center;
 }
 
 #lul {
-  cursor: pointer;
-  color: rgb(100, 173, 64);
-  font-family: sans-serif;
-  margin-top: 20px;
-  justify-content: center;
-  margin-left: 30px;
-}
-
-#st {
-  position: relative;
-  top: 10px;
-  display: flex;
-  justify-content: end;
-  margin-right: 20px;
+  font-size: 24px;
 }
 
 #dtr {
   display: flex;
-  top: 7px;
-  justify-content: end;
+  align-items: center;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-
-}
-
-.sidenav {
-  height: 655px;
-  width: 160px;
-  position: relative;
-  z-index: 1;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-  padding-left: 5px;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.main {
-  margin-left: 160px;
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-
-  .sidenav a {
-    font-size: 18px;
-  }
-}
-
-#dd {
+#st {
   display: flex;
-  width: 100%;
-  height: 656px;
-  flex-direction: row;
+  gap: 20px;
+  margin-right: 20px;
 }
 
-#stmts {
-  padding: 6px 16px 6px 0px;
-  margin: 0px;
-  width: 29px;
+#flexitem {
+  flex: 1;
 }
 
-#btn {
-  margin-left: 2.5%;
-  margin-top: 0.7%;
-  background-color: rgb(119, 199, 79);
-  border-radius: 12px;
-  border: none;
+#flexitem a {
   color: white;
-  padding: 12px 16px;
-  font-size: 16px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s;
+  text-align: center;
+}
+
+#flexitem a:hover {
+  color: #ffdd57;
+}
+
+#so {
+  display: flex;
+  align-items: center;
+}
+
+#so a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+#so a img:hover {
+  transform: scale(1.1);
+}
+
+/* Container styles */
+#itm {
+  margin: 35px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Grid with two columns */
+  gap: 25px;
+  /* Adjust the gap between the cards */
+  justify-content: center;
+  /* Center the cards horizontally */
+  align-items: center;
+  /* Center the cards vertically */
+  place-items: center;
+  /* Center both horizontally and vertically */
+}
+
+/* Card styles */
+#bx {
+  background: rgb(119, 199, 79);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 250px;
+  /* Adjusted card width */
+  height: 250px;
+  /* Adjusted card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#bx:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+#imag {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Additional styles */
+a {
   cursor: pointer;
 }
 
-/* Darker background on mouse-over */
-#btn:hover {
-  background-color: rgb(13, 157, 13);
+u {
+  text-decoration: none;
+  border-bottom: 2px solid #ffdd57;
+  transition: border-color 0.3s;
 }
 
-#flexitem1 {
-  font-size: 16px;
-  padding-left: 15%;
-  padding-right: 20%;
-}
-
-#flexitem1:hover {
-  font-size: 1.1rem;
+u:hover {
+  border-color: rgb(119, 199, 79);
 }
