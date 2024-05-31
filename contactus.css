@@ -172,3 +172,13 @@ a {
     cursor: context-menu;
     color: rgb(78, 179, 219);
 }
+
+#top {
+    text-decoration: none;
+    border-bottom: 2px solid #ffdd57;
+    transition: border-color 0.3s;
+}
+
+#top:hover {
+    border-color: rgb(119, 199, 79);
+}
