@@ -275,3 +275,18 @@ u {
 u:hover {
   border-color: rgb(119, 199, 79);
 }
+
+.close {
+  text-align: right;
+}
+
+.clsbut {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.clsbut:hover {
+  color: #ff4b5c;
+}
